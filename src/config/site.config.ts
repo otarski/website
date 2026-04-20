@@ -58,30 +58,25 @@ export interface SiteConfig {
 }
 
 const siteConfig: SiteConfig = {
-  name: 'Astro Rocket',
+  name: 'Otarski',
   description:
-    'Astro Rocket — A production-ready Astro 6 starter with 12 beautiful themes, 57+ components, built-in i18n, dark mode and a fast, modern foundation to build anything on.',
-  url: SITE_URL || 'https://astrorocket.dev',
+    'Otarski is a software engineering company specializing in the design, development, and deployment of production-grade AI systems and digital platforms for organizations worldwide.',
+  url: SITE_URL || 'https://otarski.com',
   ogImage: '/og-default.svg',
-  author: 'Hans Martens',
-  email: 'hello@hansmartens.dev',
+  author: 'Otarski',
+  email: 'hello@otarski.com',
   address: {
     street: '',
-    city: 'Veghel',
+    city: 'Remote-first',
     state: '',
     zip: '',
-    country: 'the Netherlands',
+    country: 'Global engagements',
   },
+  /** Public profile URLs — used by Footer, Header, and JSON-LD `sameAs` */
   socialLinks: [
-    'https://github.com/hansmartens68/Astro-Rocket',
-    'https://x.com/hansmartens_dev',
-    'https://www.linkedin.com',
-    'https://bsky.app/profile/hansmartens-online.bsky.social',
+    'https://www.linkedin.com/company/otarski',
+    'https://github.com/otarski',
   ],
-  twitter: {
-    site: 'https://x.com/hansmartens_dev',
-    creator: '@hansmartens_dev',
-  },
   verification: {
     google: GOOGLE_SITE_VERIFICATION,
     bing: BING_SITE_VERIFICATION,
@@ -90,7 +85,7 @@ const siteConfig: SiteConfig = {
   blogImageOverlay: true,
   branding: {
     logo: {
-      alt: 'Astro Rocket',
+      alt: 'Otarski',
       imageUrl: '/favicon.svg',
     },
     favicon: {

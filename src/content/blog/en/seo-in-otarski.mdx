@@ -1,17 +1,17 @@
 ---
-title: "SEO in Astro Rocket: What's Built In and How to Configure It"
-description: "Astro Rocket handles structured data, Open Graph, canonical URLs, sitemaps, and more out of the box. Here's exactly what ships and where to configure it."
+title: "SEO in Otarski: What's Built In and How to Configure It"
+description: "Otarski handles structured data, Open Graph, canonical URLs, sitemaps, and more out of the box. Here's exactly what ships and where to configure it."
 publishedAt: 2026-03-17
-author: "Hans Martens"
-tags: ["astro-rocket", "seo", "structured-data", "tutorial", "configuration"]
+author: "Team"
+tags: ["otarski", "seo", "structured-data", "tutorial", "configuration"]
 featured: false
 locale: en
-image: "../../../assets/blog/seo-in-astro-rocket.svg"
-svgSlug: "seo-in-astro-rocket"
+image: "../../../assets/blog/seo-in-otarski.svg"
+svgSlug: "seo-in-otarski"
 imageAlt: "Search icon above the word 'seo' on a dark navy background"
 ---
 
-SEO is one of those areas where "we've handled it" can mean anything from three meta tags to a complete implementation. Astro Rocket ships a complete one. Here is exactly what is included and where each piece lives.
+SEO is one of those areas where "we've handled it" can mean anything from three meta tags to a complete implementation. Otarski ships a complete one. Here is exactly what is included and where each piece lives.
 
 ## What ships out of the box
 
@@ -28,7 +28,7 @@ None of these require per-page setup. They are wired into the base layout and ru
 
 ## Structured data
 
-Structured data is the part most themes skip. Astro Rocket outputs [JSON-LD](https://json-ld.org/) schema.org markup on every page.
+Structured data is the part most themes skip. Otarski outputs [JSON-LD](https://json-ld.org/) schema.org markup on every page.
 
 **Home page** outputs three schemas (exact set depends on which schema props are enabled in `src/pages/index.astro`):
 
@@ -45,7 +45,7 @@ Structured data is the part most themes skip. Astro Rocket outputs [JSON-LD](htt
   "description": "Post description",
   "datePublished": "2026-03-17",
   "dateModified": "2026-03-17",
-  "author": { "@type": "Person", "name": "Hans Martens" },
+  "author": { "@type": "Person", "name": "Team" },
   "image": "https://yoursite.com/og-image.jpg"
 }
 ```

@@ -1,6 +1,6 @@
 {
-  "question": "What is Astro Rocket?",
-  "answer": "Astro Rocket is a free, open-source website theme built on Astro 6 and Tailwind CSS v4. It includes a full component library, a blog with MDX support, built-in dark mode, SEO, and everything else you need to ship a fast, modern website without starting from scratch.",
+  "question": "What does Otarski do?",
+  "answer": "Otarski designs, develops, and deploys production-grade AI systems and digital platforms. We combine deep technical expertise with disciplined execution to help organizations move from concept to production quickly, with solutions built for reliability, maintainability, and long-term scale.",
   "category": "general",
   "order": 1,
   "locale": "en"

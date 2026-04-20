@@ -10,6 +10,30 @@ import type {
 } from 'schema-dts';
 import siteConfig from '@/config/site.config';
 
+function postalAddressFromConfig():
+  | {
+      '@type': 'PostalAddress';
+      streetAddress?: string;
+      addressLocality?: string;
+      addressRegion?: string;
+      postalCode?: string;
+      addressCountry?: string;
+    }
+  | undefined {
+  const a = siteConfig.address;
+  if (!a) return undefined;
+  const hasAny = a.street || a.city || a.state || a.zip || a.country;
+  if (!hasAny) return undefined;
+  return {
+    '@type': 'PostalAddress',
+    ...(a.street ? { streetAddress: a.street } : {}),
+    ...(a.city ? { addressLocality: a.city } : {}),
+    ...(a.state ? { addressRegion: a.state } : {}),
+    ...(a.zip ? { postalCode: a.zip } : {}),
+    ...(a.country ? { addressCountry: a.country } : {}),
+  };
+}
+
 /**
  * Create WebSite schema for homepage
  */
@@ -24,24 +48,20 @@ export function createWebsiteSchema(): WithContext<WebSite> {
 }
 
 /**
- * Create Person schema for Astro Rocket
+ * Create Person schema for the site author (from site.config)
  */
 export function createPersonSchema(): WithContext<Person> {
+  const addr = postalAddressFromConfig();
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
-    name: 'Astro Rocket',
-    jobTitle: 'Web Designer & Developer',
+    name: siteConfig.author,
+    jobTitle: 'Software engineer',
     url: siteConfig.url,
     email: siteConfig.email,
     ...(siteConfig.authorImage ? { image: `${siteConfig.url}${siteConfig.authorImage}` } : {}),
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Veghel',
-      addressRegion: 'Noord-Brabant',
-      addressCountry: 'NL',
-    },
-    sameAs: siteConfig.socialLinks,
+    ...(addr ? { address: addr } : {}),
+    ...(siteConfig.socialLinks.length > 0 ? { sameAs: siteConfig.socialLinks } : {}),
   };
 }
 
@@ -49,6 +69,7 @@ export function createPersonSchema(): WithContext<Person> {
  * Create ProfessionalService schema for local SEO
  */
 export function createProfessionalServiceSchema(): WithContext<LocalBusiness> {
+  const addr = postalAddressFromConfig();
   return {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService' as 'LocalBusiness',
@@ -57,17 +78,9 @@ export function createProfessionalServiceSchema(): WithContext<LocalBusiness> {
     email: siteConfig.email,
     ...(siteConfig.phone ? { telephone: siteConfig.phone } : {}),
     ...(siteConfig.authorImage ? { image: `${siteConfig.url}${siteConfig.authorImage}` } : {}),
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Veghel',
-      addressRegion: 'Noord-Brabant',
-      addressCountry: 'NL',
-    },
-    areaServed: [
-      { '@type': 'Country', name: 'Netherlands' },
-      { '@type': 'Country', name: 'Worldwide' },
-    ],
-    sameAs: siteConfig.socialLinks,
+    ...(addr ? { address: addr } : {}),
+    areaServed: [{ '@type': 'Country', name: 'Worldwide' }],
+    ...(siteConfig.socialLinks.length > 0 ? { sameAs: siteConfig.socialLinks } : {}),
   };
 }
 
@@ -83,8 +96,9 @@ export function createOrganizationSchema(): WithContext<Organization> {
     '@type': 'Organization',
     name: siteConfig.name,
     url: siteConfig.url,
+    ...(siteConfig.description ? { description: siteConfig.description } : {}),
     ...(logoUrl ? { logo: logoUrl } : {}),
-    sameAs: siteConfig.socialLinks,
+    ...(siteConfig.socialLinks.length > 0 ? { sameAs: siteConfig.socialLinks } : {}),
     contactPoint: siteConfig.phone
       ? {
           '@type': 'ContactPoint',

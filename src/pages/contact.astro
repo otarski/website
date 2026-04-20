@@ -19,7 +19,7 @@ const channels = [
     icon: 'mail',
     label: 'Email',
     value: siteConfig.email,
-    note: 'Drop us a line',
+    note: 'Primary channel',
     href: `mailto:${siteConfig.email}`,
     external: false,
   },
@@ -27,7 +27,7 @@ const channels = [
     icon: link.icon,
     label: link.label,
     value: link.href.replace(/^https?:\/\/(www\.)?/, ''),
-    note: 'Follow along',
+    note: 'Social',
     href: link.href,
     external: true,
   })),
@@ -35,22 +35,22 @@ const channels = [
 ---
 
 <PageLayout
-  title="Contact — Astro Rocket"
-  description="Get in touch"
+  title="Contact — Otarski"
+  description="Reach Otarski for AI systems, automation, and fullstack engineering engagements."
   eagerReveal
 >
   <Hero layout="centered" size="sm">
     <Badge slot="badge" variant="brand" pill>
       <Icon name="mail" size="sm" />
-      Get in touch
+      Contact
     </Badge>
 
     <h1 slot="title">
-      Send me a <span class="text-brand-500">message.</span>
+      Discuss your <span class="text-brand-500">roadmap.</span>
     </h1>
 
     <p slot="description">
-      Use the form below or reach out on any of these channels. I'll get back to you within 1 business day.
+      Use the form or email below. We typically reply within two business days with next steps or clarifying questions.
     </p>
   </Hero>
 
@@ -63,7 +63,7 @@ const channels = [
         <div class="lg:col-span-3 h-full" data-reveal>
           <Card padding="lg" class="h-full flex flex-col justify-center">
             <h2 class="font-display text-xl font-bold text-foreground mb-6">Send a message</h2>
-            <ContactForm />
+            <ContactForm successMessage="Thank you — we received your message and will reply soon." />
           </Card>
         </div>
 
@@ -105,8 +105,8 @@ const channels = [
                 <Icon name="map-pin" size="sm" />
               </div>
               <div>
-                <p class="font-semibold text-sm text-foreground">{siteConfig.address?.city ?? 'Your City'}</p>
-                <p class="text-xs text-foreground-muted mt-0.5">Based in {siteConfig.address?.country ?? 'Your Country'}</p>
+                <p class="font-semibold text-sm text-foreground">{siteConfig.address?.city ?? 'Remote-first'}</p>
+                <p class="text-xs text-foreground-muted mt-0.5">{siteConfig.address?.country ?? 'Serving clients worldwide'}</p>
               </div>
             </div>
           </Card>

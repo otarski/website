@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="public/readme-hero.svg" alt="Astro Rocket" width="880" />
+  <img src="public/readme-hero.svg" alt="Otarski" width="880" />
 </p>
 
 <p align="center">
-  <strong>Astro Rocket</strong> — A production-ready Astro 6 starter theme. Change the text, launch your site.
+  <strong>Otarski</strong> — A production-ready Astro 6 starter theme. Change the text, launch your site.
 </p>
 
 <p align="center">
@@ -11,29 +11,29 @@
   <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind-4.0-38bdf8?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
   <a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-5.7-3178c6?logo=typescript&logoColor=white" alt="TypeScript" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22c55e" alt="License" /></a>
-  <a href="https://github.com/hansmartens68/astro-rocket"><img src="https://img.shields.io/github/stars/hansmartens68/astro-rocket?style=flat&label=%E2%AD%90%20Star%20on%20GitHub&color=f59e0b" alt="Star on GitHub" /></a>
-  <a href="https://github.com/hansmartens68/astro-rocket"><img src="https://visitor-badge.laobi.icu/badge?page_id=hansmartens68.astro-rocket" alt="Visitors" /></a>
+  <a href="https://github.com/YOUR_USERNAME/otarski"><img src="https://img.shields.io/github/stars/YOUR_USERNAME/otarski?style=flat&label=%E2%AD%90%20Star%20on%20GitHub&color=f59e0b" alt="Star on GitHub" /></a>
+  <a href="https://github.com/YOUR_USERNAME/otarski"><img src="https://visitor-badge.laobi.icu/badge?page_id=YOUR_USERNAME.otarski" alt="Visitors" /></a>
 </p>
 
 ---
 
 ## Overview
 
-Astro Rocket is a **launch-ready starter theme** for web designers, developers, bloggers, and anyone who needs a portfolio website. Every page is already built and styled — you change the text and content, and your site is ready to go live.
+Otarski is a **launch-ready starter theme** for web designers, developers, bloggers, and anyone who needs a portfolio website. Every page is already built and styled — you change the text and content, and your site is ready to go live.
 
 It ships with a full blog, a complete component library, a built-in SEO layer, dark mode, a contact form, and 12 colour themes you can switch with one click. It's built on Astro 6 and Tailwind CSS v4.
 
-**[Live demo → astrorocket.dev](https://astrorocket.dev)** · **[Built by Hans Martens → hansmartens.dev](https://hansmartens.dev)**
+**[Live demo → otarski.dev](https://otarski.dev)** (set `SITE_URL` in `.env` to your production domain)
 
-> **Astro Rocket is a fork of [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com).** Velocity is the foundation — a powerful Astro boilerplate with a comprehensive design system and component library. Full credit to the Southwell Media team for that work. Astro Rocket builds on it with a different goal: a complete, ready-to-launch website where you only change the text to make it your own.
+> **Otarski is a fork of [Velocity](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com).** Velocity is the foundation — a powerful Astro boilerplate with a comprehensive design system and component library. Full credit to the Southwell Media team for that work. Otarski builds on it with a different goal: a complete, ready-to-launch website where you only change the text to make it your own.
 
 ---
 
 ## What changed from Velocity
 
-The following changes were made to the free Velocity theme to create Astro Rocket:
+The following changes were made to the free Velocity theme to create Otarski:
 
-| Change | Velocity | Astro Rocket |
+| Change | Velocity | Otarski |
 |--------|----------|--------------|
 | **Theme switching** | Edit a CSS import file and rebuild | 12 colour swatches in the header — click one and the logo badge, blog images, and every brand color update live on screen. No file edits, no rebuilds. Selector can be removed from the header once you've chosen a color. |
 | **Colour themes** | 1 default theme | 12 Tailwind-based themes — all 12 shown as swatches in the header selector (Orange, Amber, Lime, Emerald, Teal, Cyan, Sky, Blue, Indigo, Violet, Purple, Magenta) |
@@ -45,7 +45,7 @@ The following changes were made to the free Velocity theme to create Astro Rocke
 | **Dark mode storage** | `localStorage` | `sessionStorage` — resets to dark on every new tab/session (see [why](#dark-mode)) |
 | **Target audience** | Developers & agencies | Web designers, developers, bloggers, and portfolio sites |
 | **Ready to launch** | Boilerplate starting point | Fully styled pages — replace the text and your site is live |
-| **Maintained by** | Southwell Media | Hans Martens |
+| **Maintained by** | Southwell Media | Your fork |
 
 ---
 
@@ -87,7 +87,7 @@ The base theme is i18n-ready with locale-aware content collection schemas. Full 
 
 ```bash
 # Clone the repository
-git clone https://github.com/hansmartens68/astro-rocket.git my-project
+git clone https://github.com/YOUR_USERNAME/otarski.git my-project
 cd my-project
 
 # Install dependencies
@@ -107,7 +107,7 @@ Visit `http://localhost:4321` to see your site.
 ## Project Structure
 
 ```
-astro-rocket/
+otarski/
 ├── public/                  # Static assets (fonts, favicon)
 ├── src/
 │   ├── assets/              # Images and icons (processed by Astro)
@@ -206,7 +206,7 @@ BING_SITE_VERIFICATION=your-code
 
 ## Design System
 
-Astro Rocket uses a three-tier design token system with OKLCH colors for perceptual uniformity:
+Otarski uses a three-tier design token system with OKLCH colors for perceptual uniformity:
 
 1. **Primitives** (`src/styles/tokens/primitives.css`) — raw color scales (gray, brand, status)
 2. **Semantic tokens** (`src/styles/themes/*.css`) — purpose-based mappings (background, foreground, border, etc.)
@@ -214,7 +214,7 @@ Astro Rocket uses a three-tier design token system with OKLCH colors for percept
 
 ### Switching Themes
 
-Astro Rocket ships with 12 colour themes, all based on Tailwind's color palette. All 12 are shown as colour swatches in the header dropdown (`ThemeSelectorDropdown`) on desktop and in the mobile menu (`ThemeSelector`). Clicking a swatch applies the theme instantly — the logo badge, blog image gradients, and every brand color on the page update live. No file edits, no rebuilds. This is the key difference from Velocity, where switching theme requires editing a CSS import file and rebuilding.
+Otarski ships with 12 colour themes, all based on Tailwind's color palette. All 12 are shown as colour swatches in the header dropdown (`ThemeSelectorDropdown`) on desktop and in the mobile menu (`ThemeSelector`). Clicking a swatch applies the theme instantly — the logo badge, blog image gradients, and every brand color on the page update live. No file edits, no rebuilds. This is the key difference from Velocity, where switching theme requires editing a CSS import file and rebuilding.
 
 The 12 themes in order: Orange, Amber, Lime, Emerald, Teal, Cyan, Sky, Blue (default), Indigo, Violet, Purple, and Magenta. The `themes` array in `src/components/layout/ThemeSelector.astro` controls which swatches are shown and in what order. You can also **remove the selector from the header entirely** once you've settled on a color — just remove `showThemeSelector` from the layout file.
 
@@ -287,7 +287,7 @@ import ThemeToggle from '@/components/layout/ThemeToggle.astro';
 
 To opt out of dark mode, remove the `.dark { ... }` block from your theme file.
 
-> **Why `sessionStorage` instead of `localStorage`?** This is a deliberate choice. `sessionStorage` persists the user's preference during their visit but resets when the tab is closed — so every new visit starts with the intended dark design. For a portfolio or marketing site this is the right call. For a product users return to daily (a SaaS dashboard, editor, etc.), switch to `localStorage` so the preference survives across sessions. Read the full reasoning in [this blog post](https://hansmartens.dev/blog/dark-mode-sessionstorage).
+> **Why `sessionStorage` instead of `localStorage`?** This is a deliberate choice. `sessionStorage` persists the user's preference during their visit but resets when the tab is closed — so every new visit starts with the intended dark design. For a portfolio or marketing site this is the right call. For a product users return to daily (a SaaS dashboard, editor, etc.), switch to `localStorage` so the preference survives across sessions. Read the full reasoning in [this blog post](/blog/dark-mode-sessionstorage).
 
 ### WCAG Contrast Requirements
 
@@ -322,7 +322,7 @@ Foreground tokens are documented with their contrast ratios inline. When customi
 
 ## Components
 
-Astro Rocket includes 57 components across 7 categories. All UI components use [class-variance-authority (CVA)](https://cva.style) for type-safe variant management.
+Otarski includes 57 components across 7 categories. All UI components use [class-variance-authority (CVA)](https://cva.style) for type-safe variant management.
 
 ### UI Components (31)
 
@@ -452,7 +452,7 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 
 <!-- Or use the full Iconify name directly -->
 <Icon name="simple-icons:vercel" size="md" />
-<Icon name="lucide:rocket" size="xl" />
+<Icon name="lucide:sparkles" size="xl" />
 ```
 
 All UI components are imported via barrel exports from `@/components/ui`. View all components at `/components` in development.
@@ -606,7 +606,7 @@ pnpm build
 
 ## Performance
 
-Astro Rocket is optimized for Core Web Vitals:
+Otarski is optimized for Core Web Vitals:
 
 - **Lighthouse Score**: 95+ across all categories
 - **Zero JavaScript** by default (islands architecture)
@@ -618,11 +618,11 @@ Astro Rocket is optimized for Core Web Vitals:
 
 ## Animations
 
-Every page in Astro Rocket includes purposeful animations that make the site feel polished and alive. All animations respect the user's `prefers-reduced-motion` setting — they are disabled automatically for users who prefer less motion.
+Every page in Otarski includes purposeful animations that make the site feel polished and alive. All animations respect the user's `prefers-reduced-motion` setting — they are disabled automatically for users who prefer less motion.
 
 ### Page transitions
 
-Astro Rocket uses Astro's built-in `<ClientRouter />` (View Transitions API) to animate between pages. Instead of a full browser reload, content fades smoothly from one page to the next. This is enabled globally in `BaseLayout.astro` and requires no per-page configuration.
+Otarski uses Astro's built-in `<ClientRouter />` (View Transitions API) to animate between pages. Instead of a full browser reload, content fades smoothly from one page to the next. This is enabled globally in `BaseLayout.astro` and requires no per-page configuration.
 
 ### Scroll-triggered animations
 
@@ -696,12 +696,12 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Links
 
-- [Astro Rocket on GitHub](https://github.com/hansmartens68/astro-rocket)
+- [Otarski on GitHub](https://github.com/YOUR_USERNAME/otarski)
 - [Velocity — the original theme](https://github.com/southwellmedia/velocity) by [Southwell Media](https://southwellmedia.com)
 - [Astro Documentation](https://docs.astro.build)
 - [Tailwind CSS v4](https://tailwindcss.com/docs)
 
 ---
 
-**Astro Rocket** is designed and maintained by [Hans Martens](https://hansmartens.dev).
+**Otarski** is maintained by you after you fork and customize it.
 Built on [Velocity](https://github.com/southwellmedia/velocity) — the original theme by [Southwell Media](https://southwellmedia.com).

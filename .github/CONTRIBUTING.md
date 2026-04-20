@@ -1,6 +1,6 @@
-# Contributing to Astro Rocket
+# Contributing to Otarski
 
-Thank you for your interest in contributing. Astro Rocket is a free, open-source Astro 6 starter theme — every improvement, however small, makes it better for everyone who builds with it.
+Thank you for your interest in contributing. Otarski is a free, open-source Astro 6 starter theme — every improvement, however small, makes it better for everyone who builds with it.
 
 ## Ways to contribute
 
@@ -12,7 +12,7 @@ Thank you for your interest in contributing. Astro Rocket is a free, open-source
 
 ## Before you start
 
-- Check the [open issues](https://github.com/hansmartens68/Astro-Rocket/issues) to avoid duplicating work
+- Check the [open issues](https://github.com/YOUR_USERNAME/otarski/issues) to avoid duplicating work
 - For significant changes, open an issue first to discuss the approach before writing code
 - All contributions are released under the [MIT License](../LICENSE)
 
@@ -22,8 +22,8 @@ Thank you for your interest in contributing. Astro Rocket is a free, open-source
 
 ```bash
 # Fork and clone the repo
-git clone https://github.com/YOUR_USERNAME/Astro-Rocket.git
-cd Astro-Rocket
+git clone https://github.com/YOUR_USERNAME/otarski.git
+cd otarski
 
 # Copy the environment file
 cp .env.example .env
@@ -90,4 +90,4 @@ changes
 
 ## Questions
 
-Open a [GitHub Discussion](https://github.com/hansmartens68/Astro-Rocket/discussions) or reach out on X at [@hansmartens_dev](https://x.com/hansmartens_dev).
+Open a [GitHub Discussion](https://github.com/YOUR_USERNAME/otarski/discussions) or contact the maintainers via the email in `site.config.ts`.

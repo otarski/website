@@ -1,0 +1,9 @@
+Otarski is a software engineering company specializing in the design, development, and deployment of production-grade AI systems and digital platforms.
+
+We partner with organizations globally to transform ideas into scalable, reliable, and high-performance software solutions. Our approach combines deep technical expertise with a strong focus on execution, enabling businesses to accelerate innovation and reduce time to market.
+
+At Otarski, we focus on building systems that are not only functional but also robust, maintainable, and aligned with real-world business needs. From intelligent applications and automation systems to end-to-end product engineering, we deliver solutions designed for immediate impact and long-term scalability.
+
+Our work spans AI-driven application development, intelligent automation, and fullstack engineering, with an emphasis on rapid prototyping and production-ready delivery. We prioritize clarity, speed, and precision in every engagement, ensuring that solutions move efficiently from concept to deployment.
+
+We work with startups, small and mid-sized enterprises, and global clients to deliver high-quality software solutions with consistency, reliability, and measurable business value.

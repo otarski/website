@@ -4,7 +4,7 @@
  * Flexible footer with variant-based configuration
  *
  * Layouts:
- * - simple: Single row with logo, nav links, and social
+ * - simple: Optional logo row, then nav (left) + social (right), then centered copyright
  * - columns: Multi-column layout with link groups
  * - minimal: Just copyright
  * - stacked: Vertically stacked logo, nav, copyright
@@ -20,9 +20,10 @@ import type { HTMLAttributes } from 'astro/types';
 import { cn } from '@/lib/cn';
 import { getNavItems, type NavItem as NavConfigItem } from '@/config/nav.config';
 import { footerVariants, footerColumnGridVariants } from './footer.variants';
-import Logo from '@/components/ui/marketing/Logo/Logo.astro';
+import otarskiLogoUrl from '@/assets/branding/otarski-logo.svg?url';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 import siteConfig from '@/config/site.config';
+import { resolveSocialLinks } from '@/lib/utils';
 
 export interface NavItem {
   label: string;
@@ -57,7 +58,7 @@ interface Props extends HTMLAttributes<'footer'> {
   nav?: NavItem[];
   /** Link groups for columns layout */
   linkGroups?: FooterLinkGroup[];
-  /** Social media links */
+  /** Social media links (omit to use `siteConfig.socialLinks` URLs) */
   socialLinks?: SocialLink[];
   /** Show social links */
   showSocial?: boolean;
@@ -67,7 +68,7 @@ interface Props extends HTMLAttributes<'footer'> {
   copyright?: string;
   /** Legal links (Privacy, Terms, etc.) */
   legalLinks?: LegalLink[];
-  /** Hide logo */
+  /** Hide logo (e.g. when the header is fixed and already shows the mark) */
   hideLogo?: boolean;
   /** Tagline text under logo */
   tagline?: string;
@@ -79,16 +80,25 @@ const {
   background = 'default',
   nav,
   linkGroups = [],
-  socialLinks = [],
+  socialLinks: socialLinksProp,
   showSocial = true,
   showCopyright = true,
-  copyright = '© {year} {siteName}. Designed by <a href="https://hansmartens.dev" class="underline hover:text-foreground transition-colors" target="_blank" rel="noopener noreferrer">Hans Martens</a>.',
+  copyright = '© {year} {siteName}.',
   legalLinks = [],
   hideLogo = false,
   tagline,
   class: className,
   ...attrs
 } = Astro.props;
+
+const effectiveSocialLinks: SocialLink[] =
+  socialLinksProp !== undefined
+    ? socialLinksProp
+    : resolveSocialLinks(siteConfig.socialLinks).map((l) => ({
+        platform: l.key,
+        href: l.href,
+        label: l.label,
+      }));
 
 // Get navigation items
 const defaultNav: NavItem[] = getNavItems().map((item: NavConfigItem) => ({
@@ -127,24 +137,35 @@ const socialIcons: Record<string, string> = {
 function getSocialIcon(platform: string): string {
   return socialIcons[platform] || platform;
 }
+
+const simpleFooterHasLogoRow = !hideLogo;
+const hasNav = allNavItems.length > 0;
+const hasSocialBlock =
+  showSocial && (hasSocialSlot || effectiveSocialLinks.length > 0);
+const simpleFooterHasNavSocialRow = hasNav || hasSocialBlock;
+const simpleFooterContentAboveCopyright = simpleFooterHasLogoRow || simpleFooterHasNavSocialRow;
 ---
 
-<footer class={footerClasses} {...attrs}>
+<footer class={footerClasses} data-footer-background={background} {...attrs}>
   <div class="mx-auto max-w-6xl px-6">
     {layout === 'simple' && (
       <>
-      <div class="flex flex-col md:flex-row justify-between items-center gap-[var(--space-stack-lg)]">
-        {/* Logo & Tagline */}
-        {!hideLogo && (
-          <div class="flex flex-col items-center md:items-start gap-2">
+        {/* Optional logo + tagline */}
+        {simpleFooterHasLogoRow && (
+          <div class="flex flex-col items-center gap-2 sm:items-start">
             {hasLogoSlot ? (
               <slot name="logo" />
             ) : (
-              <a href="/" class="flex items-center gap-2">
-                <Logo size="md" />
-                <span class="font-display text-base font-bold text-brand-500">
-                  {siteConfig.name}
-                </span>
+              <a href="/" class="flex shrink-0 items-center">
+                <img
+                  src={otarskiLogoUrl}
+                  alt={siteConfig.branding.logo.alt}
+                  class="hdr-brand-logo h-7 w-auto object-contain select-none sm:h-8"
+                  width={1560}
+                  height={420}
+                  loading="lazy"
+                  decoding="async"
+                />
               </a>
             )}
             {(hasTaglineSlot || tagline) && (
@@ -155,46 +176,65 @@ function getSocialIcon(platform: string): string {
           </div>
         )}
 
-        {/* Navigation Links */}
-        <nav class="flex flex-wrap justify-center gap-[var(--space-inline-lg)] md:gap-[var(--space-stack-lg)] text-sm font-medium text-foreground-muted">
-          {allNavItems.map((item) => (
-            <a
-              href={item.href}
-              class="transition-colors hover:text-foreground"
-              target={item.external || item.href.startsWith('http') ? '_blank' : undefined}
-              rel={item.external || item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        {/* Social Links */}
-        {showSocial && socialLinks.length > 0 && (
-          hasSocialSlot ? (
-            <slot name="social" />
-          ) : (
-            <div class="flex items-center gap-[var(--space-stack-md)]">
-              {socialLinks.map((social) => (
-                <a
-                  href={social.href}
-                  class="transition-colors text-foreground-muted hover:text-foreground"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label || `Follow us on ${social.platform}`}
-                >
-                  <Icon name={getSocialIcon(social.platform)} size="md" />
-                </a>
+        {/* Top: nav (left) + social (right) */}
+        {simpleFooterHasNavSocialRow && (
+          <div
+            class={cn(
+              'flex flex-col items-center gap-[var(--space-stack-md)] sm:flex-row sm:items-center',
+              simpleFooterHasLogoRow && 'mt-[var(--space-stack-lg)]',
+              hasNav && hasSocialBlock && 'sm:justify-between',
+              hasNav && !hasSocialBlock && 'sm:justify-start',
+              !hasNav && hasSocialBlock && 'sm:justify-end'
+            )}
+          >
+            {hasNav && (
+              <nav class="flex w-full flex-wrap justify-center gap-[var(--space-inline-lg)] text-sm font-medium text-foreground-muted sm:w-auto sm:justify-start">
+                {allNavItems.map((item) => (
+                  <a
+                    href={item.href}
+                    class="transition-colors hover:text-foreground"
+                    target={item.external || item.href.startsWith('http') ? '_blank' : undefined}
+                    rel={item.external || item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </nav>
+            )}
+            {hasSocialBlock &&
+              (hasSocialSlot ? (
+                <div class="flex w-full justify-center sm:w-auto sm:justify-end">
+                  <slot name="social" />
+                </div>
+              ) : (
+                <div class="flex w-full items-center justify-center gap-[var(--space-stack-md)] sm:w-auto sm:justify-end">
+                  {effectiveSocialLinks.map((social) => (
+                    <a
+                      href={social.href}
+                      class="inline-flex text-foreground transition-opacity hover:opacity-70"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.label || `Follow us on ${social.platform}`}
+                    >
+                      <Icon name={getSocialIcon(social.platform)} size="md" class="text-foreground" />
+                    </a>
+                  ))}
+                </div>
               ))}
-            </div>
-          )
+          </div>
         )}
-      </div>
-      {showCopyright && (
-        <div class="mt-[var(--space-stack-lg)] pt-[var(--space-stack-lg)] border-t border-border text-center">
-          <p class="text-sm text-foreground-muted" set:html={processedCopyright} />
-        </div>
-      )}
+
+        {/* Bottom: centered copyright */}
+        {showCopyright && (
+          <div
+            class={cn(
+              'pt-[var(--space-stack-lg)] text-center text-sm text-foreground-muted',
+              simpleFooterContentAboveCopyright && 'mt-[var(--space-stack-lg)] border-t border-border'
+            )}
+          >
+            <p set:html={processedCopyright} />
+          </div>
+        )}
       </>
     )}
 
@@ -207,11 +247,16 @@ function getSocialIcon(platform: string): string {
               {hasLogoSlot ? (
                 <slot name="logo" />
               ) : (
-                <a href="/" class="flex items-center gap-2">
-                  <Logo size="md" />
-                  <span class="font-display text-base font-bold text-brand-500">
-                    {siteConfig.name}
-                  </span>
+                <a href="/" class="flex shrink-0 items-center">
+                  <img
+                    src={otarskiLogoUrl}
+                    alt={siteConfig.branding.logo.alt}
+                    class="hdr-brand-logo h-7 w-auto object-contain select-none sm:h-8"
+                    width={1560}
+                    height={420}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </a>
               )}
               {(hasTaglineSlot || tagline) && (
@@ -220,17 +265,17 @@ function getSocialIcon(platform: string): string {
                 </p>
               )}
               {/* Social Links in columns layout */}
-              {showSocial && socialLinks.length > 0 && (
+              {showSocial && effectiveSocialLinks.length > 0 && (
                 <div class="flex items-center gap-[var(--space-stack-md)] pt-2">
-                  {socialLinks.map((social) => (
+                  {effectiveSocialLinks.map((social) => (
                     <a
                       href={social.href}
-                      class="transition-colors text-foreground-muted hover:text-foreground"
+                      class="inline-flex text-foreground transition-opacity hover:opacity-70"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={social.label || `Follow us on ${social.platform}`}
                     >
-                      <Icon name={getSocialIcon(social.platform)} size="md" />
+                      <Icon name={getSocialIcon(social.platform)} size="md" class="text-foreground" />
                     </a>
                   ))}
                 </div>
@@ -310,11 +355,16 @@ function getSocialIcon(platform: string): string {
           hasLogoSlot ? (
             <slot name="logo" />
           ) : (
-            <a href="/" class="flex items-center gap-2">
-              <Logo size="md" />
-              <span class="font-display text-xl font-bold text-brand-500">
-                {siteConfig.name}
-              </span>
+            <a href="/" class="flex shrink-0 items-center">
+              <img
+                src={otarskiLogoUrl}
+                alt={siteConfig.branding.logo.alt}
+                class="hdr-brand-logo h-7 w-auto object-contain select-none sm:h-8"
+                width={1560}
+                height={420}
+                loading="lazy"
+                decoding="async"
+              />
             </a>
           )
         )}
@@ -341,17 +391,17 @@ function getSocialIcon(platform: string): string {
         </nav>
 
         {/* Social Links */}
-        {showSocial && socialLinks.length > 0 && (
+        {showSocial && effectiveSocialLinks.length > 0 && (
           <div class="flex items-center gap-[var(--space-stack-md)]">
-            {socialLinks.map((social) => (
+            {effectiveSocialLinks.map((social) => (
               <a
                 href={social.href}
-                class="transition-colors text-foreground-muted hover:text-foreground"
+                class="inline-flex text-foreground transition-opacity hover:opacity-70"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label || `Follow us on ${social.platform}`}
               >
-                <Icon name={getSocialIcon(social.platform)} size="md" />
+                <Icon name={getSocialIcon(social.platform)} size="md" class="text-foreground" />
               </a>
             ))}
           </div>

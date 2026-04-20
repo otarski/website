@@ -1,23 +1,23 @@
 ---
-title: "Animations in Astro Rocket — Every Effect Explained"
-description: "A complete breakdown of every animation built into Astro Rocket — page transitions, scroll-triggered counters, the reactive header, card hovers, and the full micro-animation library."
+title: "Animations in Otarski — Every Effect Explained"
+description: "A complete breakdown of every animation built into Otarski — page transitions, scroll-triggered counters, the reactive header, card hovers, and the full micro-animation library."
 publishedAt: 2026-03-23
-author: "Hans Martens"
-tags: ["astro-rocket", "animations", "components", "customization", "css"]
+author: "Team"
+tags: ["otarski", "animations", "components", "customization", "css"]
 featured: false
 locale: en
-image: "../../../assets/blog/animations-in-astro-rocket.svg"
+image: "../../../assets/blog/animations-in-otarski.svg"
 imageAlt: "Lightning bolt icon above the word 'animations' on a dark background"
-svgSlug: "animations-in-astro-rocket"
+svgSlug: "animations-in-otarski"
 ---
 
-Astro Rocket ships with animations on every page. Not decorative noise — purposeful motion that makes the site feel fast, polished, and alive. This post breaks down every animation in the theme: what it does, where it lives, and how to tune or disable it.
+Otarski ships with animations on every page. Not decorative noise — purposeful motion that makes the site feel fast, polished, and alive. This post breaks down every animation in the theme: what it does, where it lives, and how to tune or disable it.
 
-All animations in Astro Rocket respect the `prefers-reduced-motion` media query. Users who have enabled reduced motion in their operating system preferences will see no micro-animations. The implementation is in `src/styles/global.css` and requires no extra work on your part.
+All animations in Otarski respect the `prefers-reduced-motion` media query. Users who have enabled reduced motion in their operating system preferences will see no micro-animations. The implementation is in `src/styles/global.css` and requires no extra work on your part.
 
 ## Page transitions
 
-The most noticeable animation is the one between pages. Astro Rocket uses Astro's built-in `<ClientRouter />` component, which leverages the browser's View Transitions API to animate from one page to the next.
+The most noticeable animation is the one between pages. Otarski uses Astro's built-in `<ClientRouter />` component, which leverages the browser's View Transitions API to animate from one page to the next.
 
 Instead of a hard reload, the page content slides up and out while the new page slides up into view — a smooth, app-like transition that makes navigation feel immediate. This is enabled globally in `src/layouts/BaseLayout.astro`:
 

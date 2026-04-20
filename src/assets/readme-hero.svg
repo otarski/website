@@ -19,7 +19,7 @@
   <path d="M 30 210 L 30 230 L 50 230"  stroke="#10b981" stroke-width="1.5" fill="none" stroke-opacity="0.5"/>
   <path d="M 830 230 L 850 230 L 850 210" stroke="#10b981" stroke-width="1.5" fill="none" stroke-opacity="0.5"/>
 
-  <!-- Lucide Rocket — scale(5), visual centre at (440, 90) -->
+  <!-- Brand icon — scale(5), visual centre at (440, 90) -->
   <!-- Icon x≈2.5–22, y≈2–21 in 24×24; at scale 5: translate(379, 35) -->
   <g transform="translate(379, 35) scale(5)"
      stroke="#10b981" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
@@ -34,5 +34,5 @@
     text-anchor="middle"
     font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
     font-weight="800" font-size="62" letter-spacing="-1.5"
-    fill="white">Astro <tspan fill="#10b981">Rocket</tspan></text>
+    fill="white">Otarski</text>
 </svg>

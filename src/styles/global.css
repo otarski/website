@@ -1,5 +1,5 @@
 /* =============================================================================
-   Astro Rocket Global Styles
+   Otarski global styles
    =============================================================================
    Vercel-inspired: Clean, minimal, sophisticated
    ============================================================================= */
@@ -999,6 +999,21 @@
   background-color: var(--color-brand-700) !important;
   background-image: none !important;
   opacity: 0.85;
+}
+
+/* Header / footer wordmark — source SVG is a dark tile + light letterforms.
+   Light UI on default surfaces: invert so the mark reads as a light tile + dark type.
+   Dark UI or invert sections: no filter so light letters stay visible on dark surfaces. */
+.hdr-brand-logo {
+  filter: none;
+  transition: filter var(--transition-fast) var(--ease-default);
+}
+html:not(.dark) header[data-header-color-scheme='default'] .hdr-brand-logo {
+  filter: invert(1);
+}
+html:not(.dark) footer[data-footer-background='default'] .hdr-brand-logo,
+html:not(.dark) footer[data-footer-background='secondary'] .hdr-brand-logo {
+  filter: invert(1);
 }
 
 /* Header CTA — brand colour in light mode */

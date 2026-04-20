@@ -27,7 +27,7 @@ import { getNavItems, type NavItem as NavConfigItem } from '@/config/nav.config'
 import { headerVariants, headerInnerVariants } from './header.variants';
 import Button from '@/components/ui/form/Button/Button.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
-import Logo from '@/components/ui/marketing/Logo/Logo.astro';
+import otarskiLogoUrl from '@/assets/branding/otarski-logo.svg?url';
 import ThemeToggle from '@/components/layout/ThemeToggle.astro';
 import ThemeSelector from '@/components/layout/ThemeSelector.astro';
 import ThemeSelectorDropdown from '@/components/layout/ThemeSelectorDropdown.astro';
@@ -77,7 +77,7 @@ interface Props extends HTMLAttributes<'header'> {
   showMobileMenu?: boolean;
   /** Show active state for current page (default: true) */
   showActiveState?: boolean;
-  /** Logo text override */
+  /** Override logo image `alt` text (default: site branding alt) */
   logoText?: string;
   /** Hide logo entirely */
   hideLogo?: boolean;
@@ -190,16 +190,21 @@ const buttonId = `${menuId}-button`;
         (hasLogoSlot ? (
           <slot name="logo" />
         ) : (
-          <a href="/" class="flex items-center gap-2">
-            <Logo size={size === 'lg' ? 'lg' : 'md'} forceDark={isInvert} />
-            <span
+          <a href="/" class="flex shrink-0 items-center gap-2">
+            <img
+              src={otarskiLogoUrl}
+              alt={logoText || siteConfig.branding.logo.alt}
               class={cn(
-                'font-display text-xl font-bold tracking-tight',
-                isFloating ? 'hdr-logo-text' : (isInvert ? 'text-on-invert' : 'text-brand-500')
+                'hdr-brand-logo w-auto object-contain select-none',
+                size === 'lg' && 'h-8 sm:h-9',
+                size === 'md' && 'h-7',
+                size === 'sm' && 'h-6'
               )}
-            >
-              {logoText || siteConfig.name}
-            </span>
+              width={2000}
+              height={2000}
+              loading="eager"
+              decoding="async"
+            />
           </a>
         ))
     }

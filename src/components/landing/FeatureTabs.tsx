@@ -162,8 +162,8 @@ export const defaultLang = 'en';
 export default {
   'nav.home': 'Home',
   'nav.about': 'About',
-  'hero.title': 'Ship faster with Astro Rocket',
-  'hero.subtitle': 'The modern Astro starter',
+  'hero.title': 'Build with Otarski',
+  'hero.subtitle': 'AI systems, automation, and fullstack platforms',
 } as const;
 
 // Usage in components

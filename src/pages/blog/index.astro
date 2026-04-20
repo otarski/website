@@ -38,16 +38,16 @@ const getPostUrl = (postId: string) => {
 };
 ---
 
-<PageLayout title="Blog — Astro Rocket" description="Articles on web design, development, and the web by Astro Rocket." showScrollProgress eagerReveal>
+<PageLayout title="Blog — Otarski" description="Notes on engineering, AI systems, automation, and shipping reliable software from Otarski." showScrollProgress eagerReveal>
   <Hero layout="centered" size="sm">
     <Badge slot="badge" variant="brand" pill>
       <Icon name="book" size="sm" />
-      All posts
+      Insights
     </Badge>
 
     <h1 slot="title">Blog</h1>
 
-    <p slot="description">Articles on Astro, web performance, design systems, and building with Astro Rocket.</p>
+    <p slot="description">Engineering notes on AI systems, automation, fullstack delivery, and running software in production.</p>
   </Hero>
 
   <!-- Featured Posts Section -->
@@ -155,8 +155,8 @@ const getPostUrl = (postId: string) => {
 
   <!-- Follow CTA Section -->
   <CTA variant="default" size="md" maxWidth="lg" glow={false} data-reveal class:list={[featuredPosts.length > 0 && '!bg-background-secondary']}>
-    <h2 slot="heading" class="!text-4xl">Follow along</h2>
-    <p slot="description" class="!text-lg text-balance">Stay in the loop — new articles, thoughts, and updates.</p>
+    <h2 slot="heading" class="!text-4xl">Stay informed</h2>
+    <p slot="description" class="!text-lg text-balance">RSS and email for engineering notes, product thinking, and delivery practices from Otarski.</p>
 
     <div class="flex flex-wrap items-center justify-center gap-3">
       <a

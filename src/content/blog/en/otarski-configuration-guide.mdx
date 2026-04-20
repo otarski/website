@@ -1,17 +1,17 @@
 ---
-title: "Astro Rocket Configuration — Every Toggle, Theme, and Layout Option Explained"
-description: "A complete walkthrough of Astro Rocket's configuration options: 12 colour themes, OKLCH colours, typography, radius and shadow tokens, header styles, dark mode, and more."
+title: "Otarski Configuration — Every Toggle, Theme, and Layout Option Explained"
+description: "A complete walkthrough of Otarski's configuration options: 12 colour themes, OKLCH colours, typography, radius and shadow tokens, header styles, dark mode, and more."
 publishedAt: 2026-04-18
-author: "Hans Martens"
-tags: ["astro-rocket", "configuration", "customization", "themes"]
+author: "Team"
+tags: ["otarski", "configuration", "customization", "themes"]
 featured: false
 locale: en
-image: "../../../assets/blog/astro-rocket-configuration-guide.svg"
-svgSlug: "astro-rocket-configuration-guide"
-imageAlt: "Feature overview graphic for Astro Rocket on a dark background"
+image: "../../../assets/blog/otarski-configuration-guide.svg"
+svgSlug: "otarski-configuration-guide"
+imageAlt: "Feature overview graphic for Otarski on a dark background"
 ---
 
-Astro Rocket ships configured with sensible defaults. This post documents every meaningful option you can change — what it does, where to find it, and what value to set.
+Otarski ships configured with sensible defaults. This post documents every meaningful option you can change — what it does, where to find it, and what value to set.
 
 
 ## The main config file
@@ -151,7 +151,7 @@ branding: {
 
 ## Colour themes
 
-Astro Rocket ships with **12 colour themes**. All 12 are shown as coloured swatches in the header via the `ThemeSelector` component. Clicking a swatch switches the active theme instantly — no file edits, no rebuild. The logo badge, blog image gradients, and every brand colour on the page update live together.
+Otarski ships with **12 colour themes**. All 12 are shown as coloured swatches in the header via the `ThemeSelector` component. Clicking a swatch switches the active theme instantly — no file edits, no rebuild. The logo badge, blog image gradients, and every brand colour on the page update live together.
 
 ### Changing the active theme
 
@@ -205,7 +205,7 @@ Once you've settled on your brand colour, you can remove the selector from the h
 
 ### Understanding OKLCH — the three numbers
 
-All colour values in Astro Rocket use the OKLCH colour space: `oklch(lightness% chroma hue)`.
+All colour values in Otarski use the OKLCH colour space: `oklch(lightness% chroma hue)`.
 
 | Parameter | Range | What it means |
 |-----------|-------|----------------|
@@ -333,7 +333,7 @@ In light mode these default to near-black values (around 10–18% lightness) wit
 
 ## Header: floating capsule vs. fixed bar
 
-Astro Rocket has two header shapes. The landing and marketing layouts use a floating capsule:
+Otarski has two header shapes. The landing and marketing layouts use a floating capsule:
 
 ```astro
 <Header shape="floating" variant="transparent" colorScheme="invert" position="fixed" />
@@ -553,4 +553,4 @@ Remove any URL you don't use. The footer won't render an empty social section. I
 | Footer legal links | `src/layouts/*.astro` | `legalLinks` array |
 | Analytics IDs | `.env` | `PUBLIC_GA_MEASUREMENT_ID` etc. |
 
-If you like Astro Rocket, a [star on GitHub](https://github.com/hansmartens68/astro-rocket) helps other developers find it. Takes two seconds.
+For questions about how Otarski can support your roadmap, reach us via the [contact page](/contact).

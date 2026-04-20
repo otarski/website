@@ -22,39 +22,34 @@ interface ScriptLine {
   type: LineType;
 }
 
-// Astro Rocket setup flow: clone → install → dev
+// Otarski delivery flow (illustrative)
 const script: ScriptLine[] = [
-  // Step 1: clone
-  { text: '$ git clone https://github.com/hansmartens68/Astro-Rocket.git', delay: 1200, type: 'command' },
+  { text: '$ otarski assess --requirements --risk', delay: 1100, type: 'command' },
   { text: '', delay: 200, type: 'command' },
-  { text: 'Cloning into \'Astro-Rocket\'...', delay: 300, type: 'prompt-hint' },
-  { text: '✔  Repository cloned', delay: 600, type: 'success' },
+  { text: '◐  Mapping goals, constraints, and success metrics...', delay: 500, type: 'spinner' },
+  { text: '✔  Discovery baseline captured', delay: 700, type: 'success' },
   { text: '', delay: 200, type: 'prompt-label' },
 
-  // Step 2: install
-  { text: '$ cd Astro-Rocket && pnpm install', delay: 600, type: 'command' },
+  { text: '$ otarski build --architecture --tests', delay: 700, type: 'command' },
   { text: '', delay: 200, type: 'command' },
-  { text: '◐  Resolving dependencies...', delay: 400, type: 'spinner' },
-  { text: '✔  Dependencies installed', delay: 700, type: 'success' },
+  { text: '◐  Implementing services, automation, and interfaces...', delay: 500, type: 'spinner' },
+  { text: '✔  Build verified in staging', delay: 800, type: 'success' },
   { text: '', delay: 200, type: 'prompt-label' },
 
-  // Step 3: dev
-  { text: '$ pnpm dev', delay: 600, type: 'command' },
+  { text: '$ otarski deploy --environment production', delay: 800, type: 'command' },
   { text: '', delay: 200, type: 'command' },
-  { text: '◐  Starting Astro dev server...', delay: 400, type: 'spinner' },
-  { text: '✔  Astro dev server started', delay: 600, type: 'success' },
+  { text: '◐  Rolling out with observability and safeguards...', delay: 500, type: 'spinner' },
+  { text: '✔  Production deployment complete', delay: 700, type: 'success' },
   { text: '│', delay: 100, type: 'prompt-label' },
 
-  // Next steps note
-  { text: '◇  Ready ──────────────────────────╮', delay: 300, type: 'note-header' },
-  { text: '│                                  │', delay: 50, type: 'note-content' },
-  { text: '│  localhost:4321                  │', delay: 100, type: 'note-content' },
-  { text: '│                                  │', delay: 50, type: 'note-content' },
-  { text: '├──────────────────────────────────╯', delay: 200, type: 'note-content' },
+  { text: '◇  Outcome ────────────────────────╮', delay: 300, type: 'note-header' },
+  { text: '│  Reliable, maintainable systems  │', delay: 50, type: 'note-content' },
+  { text: '│  Ready for iteration with your team│', delay: 100, type: 'note-content' },
+  { text: '│                                    │', delay: 50, type: 'note-content' },
+  { text: '├────────────────────────────────────╯', delay: 200, type: 'note-content' },
   { text: '│', delay: 100, type: 'prompt-label' },
 
-  // Outro
-  { text: '└  Happy building! 🚀', delay: 0, type: 'outro' },
+  { text: '└  Otarski — clarity, speed, precision', delay: 0, type: 'outro' },
 ];
 
 export function TerminalDemo() {

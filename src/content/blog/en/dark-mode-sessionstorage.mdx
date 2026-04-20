@@ -1,9 +1,9 @@
 ---
-title: "Why Astro Rocket Uses sessionStorage for Dark Mode (Not localStorage)"
-description: "Dark mode is the default experience in Astro Rocket — and that's a deliberate design decision. Here's the reasoning, the code, and exactly how to change it."
+title: "Why Otarski Uses sessionStorage for Dark Mode (Not localStorage)"
+description: "Dark mode is the default experience in Otarski — and that's a deliberate design decision. Here's the reasoning, the code, and exactly how to change it."
 publishedAt: 2026-03-15
-author: "Hans Martens"
-tags: ["dark-mode", "astro-rocket", "design", "tutorial"]
+author: "Team"
+tags: ["dark-mode", "otarski", "design", "tutorial"]
 featured: false
 locale: en
 image: "../../../assets/blog/dark-mode-sessionstorage.svg"
@@ -11,14 +11,14 @@ svgSlug: "dark-mode-sessionstorage"
 imageAlt: "Split panel showing dark mode on the left with a moon and sessionStorage badge, and light mode on the right with a sun and localStorage badge"
 ---
 
-Most dark mode implementations ask: "what did the user last choose?" Astro Rocket asks a different question: "what is the right default for this site?" The answer is dark — always — and `sessionStorage` is the technical expression of that decision.
+Most dark mode implementations ask: "what did the user last choose?" Otarski asks a different question: "what is the right default for this site?" The answer is dark — always — and `sessionStorage` is the technical expression of that decision.
 
 This post explains the reasoning, shows exactly how the implementation works, and gives you the precise code to change it if your own site calls for something different.
 
 
 ## The design decision
 
-Dark mode is not a fallback for Astro Rocket. It is the primary visual experience. The typography, colour palette, and contrast ratios were all designed and tested in dark mode first. Light mode works and is fully supported, but the site is at its best in the dark.
+Dark mode is not a fallback for Otarski. It is the primary visual experience. The typography, colour palette, and contrast ratios were all designed and tested in dark mode first. Light mode works and is fully supported, but the site is at its best in the dark.
 
 `sessionStorage` encodes this intent precisely. The site always loads in dark mode. If a visitor switches to light during a session, that preference is respected for the duration of that visit. When they open a new tab or return the next day, they are back in the dark — the designed state.
 
@@ -131,6 +131,6 @@ This is the right pattern for a site with a broad, unknown audience. It is more 
 | Best for opinionated design sites | ✓ | — | — |
 | Best for general-audience sites | — | ✓ | ✓ |
 
-Astro Rocket uses `sessionStorage` because the site has a clear visual identity and dark mode is part of it. If you are building a business site, a documentation portal, or anything serving a broad audience, `localStorage` or OS preference is the more considerate default.
+Otarski uses `sessionStorage` because the site has a clear visual identity and dark mode is part of it. If you are building a business site, a documentation portal, or anything serving a broad audience, `localStorage` or OS preference is the more considerate default.
 
 The code is yours. Change two lines and it behaves exactly the way your users expect.
