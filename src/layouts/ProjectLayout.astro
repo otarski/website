@@ -84,7 +84,7 @@ const breadcrumbs = [
     />
 
     <article class="pt-8 pb-[var(--space-section-md)]">
-      <div class="mx-auto max-w-4xl px-6">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6">
         <Breadcrumbs items={breadcrumbs} class="mb-8" />
 
         <div class="prose prose-lg max-w-none">
@@ -107,7 +107,7 @@ const breadcrumbs = [
 
     {related.length > 0 && (
       <section class="py-[var(--space-section-md)] bg-background-secondary border-t border-border" data-reveal>
-        <div class="mx-auto max-w-4xl px-6">
+        <div class="mx-auto max-w-4xl px-4 sm:px-6">
           <h2 class="font-display text-2xl font-bold text-foreground mb-6">Related</h2>
           <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((project) => (

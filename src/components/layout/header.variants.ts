@@ -48,7 +48,7 @@ export const headerInnerVariants = cva(
         lg: 'h-16',
       },
       shape: {
-        bar: 'mx-auto max-w-6xl px-6',
+        bar: 'mx-auto max-w-6xl px-4 sm:px-6',
         floating: 'px-4',
       },
     },

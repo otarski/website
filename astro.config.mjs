@@ -11,7 +11,7 @@ const isNetlify = process.env.DEPLOY_TARGET === 'netlify';
 
 export default defineConfig({
   adapter: isNetlify ? netlify() : vercel(),
-  site: process.env.SITE_URL || 'https://example.com',
+  site: process.env.SITE_URL || 'https://otarski.com',
 
   env: {
     schema: {

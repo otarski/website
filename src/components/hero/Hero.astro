@@ -51,7 +51,7 @@ const contentClasses = cn(
 );
 
 const gridClasses = cn(
-  'mx-auto grid max-w-6xl grid-cols-1 items-center gap-[var(--space-section-gap)] px-6',
+  'mx-auto grid max-w-6xl grid-cols-1 items-center gap-[var(--space-section-gap)] px-4 sm:px-6',
   layout === 'split' && 'lg:grid-cols-2 lg:gap-[var(--space-section-gap)]'
 );
 ---
@@ -104,8 +104,8 @@ const gridClasses = cn(
       {hasTitleSlot && (
         <div class={cn(
           'hero-title-slot mb-[var(--space-heading-gap)]',
-          '[&>h1]:font-display [&>h1]:text-5xl [&>h1]:leading-[1.1] [&>h1]:font-bold [&>h1]:tracking-tight [&>h1]:text-balance [&>h1]:text-foreground md:[&>h1]:text-6xl lg:[&>h1]:text-7xl',
-          '[&>h2]:font-display [&>h2]:text-4xl [&>h2]:leading-[1.1] [&>h2]:font-bold [&>h2]:tracking-tight [&>h2]:text-balance [&>h2]:text-foreground md:[&>h2]:text-5xl lg:[&>h2]:text-6xl'
+          '[&>h1]:font-display [&>h1]:text-4xl [&>h1]:leading-[1.1] [&>h1]:font-bold [&>h1]:tracking-tight [&>h1]:text-balance [&>h1]:text-foreground md:[&>h1]:text-6xl lg:[&>h1]:text-7xl',
+          '[&>h2]:font-display [&>h2]:text-3xl [&>h2]:leading-[1.1] [&>h2]:font-bold [&>h2]:tracking-tight [&>h2]:text-balance [&>h2]:text-foreground md:[&>h2]:text-5xl lg:[&>h2]:text-6xl'
         )}>
           <slot name="title" />
         </div>
@@ -114,9 +114,9 @@ const gridClasses = cn(
       {/* Description Slot */}
       {hasDescriptionSlot && (
         <div class={cn(
-          'mb-[var(--space-stack-lg)] text-lg leading-relaxed text-foreground-muted',
+          'mb-[var(--space-stack-lg)] text-base sm:text-lg leading-relaxed text-foreground-muted',
           descriptionClass,
-          '[&>p]:text-lg [&>p]:leading-relaxed [&>p]:text-foreground-muted',
+          '[&>p]:text-base [&>p]:leading-relaxed [&>p]:text-foreground-muted sm:[&>p]:text-lg',
           layout === 'centered' && 'mx-auto'
         )}>
           <slot name="description" />
