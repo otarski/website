@@ -56,7 +56,7 @@ export function createPersonSchema(): WithContext<Person> {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: siteConfig.author,
-    jobTitle: 'Software engineer',
+    jobTitle: 'Hiring AI assurance',
     url: siteConfig.url,
     email: siteConfig.email,
     ...(siteConfig.authorImage ? { image: `${siteConfig.url}${siteConfig.authorImage}` } : {}),
@@ -76,10 +76,14 @@ export function createProfessionalServiceSchema(): WithContext<LocalBusiness> {
     name: siteConfig.name,
     url: siteConfig.url,
     email: siteConfig.email,
+    ...(siteConfig.description ? { description: siteConfig.description } : {}),
     ...(siteConfig.phone ? { telephone: siteConfig.phone } : {}),
     ...(siteConfig.authorImage ? { image: `${siteConfig.url}${siteConfig.authorImage}` } : {}),
     ...(addr ? { address: addr } : {}),
-    areaServed: [{ '@type': 'Country', name: 'Worldwide' }],
+    areaServed: [
+      { '@type': 'Country', name: 'United States' },
+      { '@type': 'Country', name: 'Worldwide' },
+    ],
     ...(siteConfig.socialLinks.length > 0 ? { sameAs: siteConfig.socialLinks } : {}),
   };
 }

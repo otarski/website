@@ -21,12 +21,31 @@
    ============================================================================= */
 
 html[data-theme="orange"] {
+  /* PRD accent references (services / market cards) */
+  --prd-coral: #c84b1e;
+  --prd-teal: #0f6e56;
+  --prd-blue: #185fa5;
+
+  /* -------------------------------------------------------------------------
+     Brand — PRD coral / rust (#c84b1e), warm paper backgrounds
+     ------------------------------------------------------------------------- */
+  --brand-50: oklch(97.2% 0.018 42);
+  --brand-100: oklch(94% 0.035 42);
+  --brand-200: oklch(86% 0.07 42);
+  --brand-300: oklch(72% 0.12 42);
+  --brand-400: oklch(58% 0.16 42);
+  --brand-500: oklch(52% 0.17 42);
+  --brand-600: oklch(46% 0.15 42);
+  --brand-700: oklch(40% 0.13 42);
+  --brand-800: oklch(34% 0.11 42);
+  --brand-900: oklch(28% 0.08 42);
+
   /* -------------------------------------------------------------------------
      Semantic Tokens - Light Mode
      ------------------------------------------------------------------------- */
-  --background: var(--gray-0);
-  --background-secondary: oklch(97.5% 0.010 38);
-  --background-tertiary: oklch(95% 0.018 38);
+  --background: oklch(98.8% 0.004 85);
+  --background-secondary: oklch(97.2% 0.008 85);
+  --background-tertiary: oklch(95.5% 0.012 85);
   --background-elevated: var(--gray-0);
 
   --foreground: var(--gray-900);           /* 18.3:1 on white — WCAG AAA */
@@ -124,6 +143,10 @@ html[data-theme="orange"] {
    Dark Mode - The Vercel signature look
    ------------------------------------------------------------------------- */
 html.dark[data-theme="orange"] {
+  --prd-coral: #e06a45;
+  --prd-teal: #2a9d7a;
+  --prd-blue: #3d8fd9;
+
   /* Backgrounds with a barely-there warm tint — matches the orange brand character */
   --background: oklch(9.5% 0.006 38);
   --background-secondary: oklch(15% 0.006 38);

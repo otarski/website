@@ -38,16 +38,22 @@ const getPostUrl = (postId: string) => {
 };
 ---
 
-<PageLayout title="Blog — Otarski" description="Notes on engineering, AI systems, automation, and shipping reliable software from Otarski." showScrollProgress eagerReveal>
+<PageLayout
+  title="Blog — Otarski"
+  description="Updates from Otarski will appear here when we publish again."
+  showScrollProgress
+  eagerReveal
+  noindex
+>
   <Hero layout="centered" size="sm">
     <Badge slot="badge" variant="brand" pill>
       <Icon name="book" size="sm" />
-      Insights
+      Blog
     </Badge>
 
-    <h1 slot="title">Blog</h1>
+    <h1 slot="title">No posts yet</h1>
 
-    <p slot="description">Engineering notes on AI systems, automation, fullstack delivery, and running software in production.</p>
+    <p slot="description">We have taken the blog offline for now. For product and assurance questions, use the contact page.</p>
   </Hero>
 
   <!-- Featured Posts Section -->
@@ -155,17 +161,21 @@ const getPostUrl = (postId: string) => {
 
   <!-- Follow CTA Section -->
   <CTA variant="default" size="md" maxWidth="lg" glow={false} data-reveal class:list={[featuredPosts.length > 0 && '!bg-background-secondary']}>
-    <h2 slot="heading" class="!text-4xl">Stay informed</h2>
-    <p slot="description" class="!text-lg text-balance">RSS and email for engineering notes, product thinking, and delivery practices from Otarski.</p>
+    <h2 slot="heading" class="!text-4xl">Get in touch</h2>
+    <p slot="description" class="!text-lg text-balance">Questions about Diagnosis, Monitoring, or Audit — reach us by email or the contact form.</p>
 
     <div class="flex flex-wrap items-center justify-center gap-3">
-      <a
-        href="/rss.xml"
-        class="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-500 hover:text-brand-500"
-      >
-        <Icon name="rss" size="sm" />
-        RSS Feed
-      </a>
+      {
+        posts.length > 0 && (
+          <a
+            href="/rss.xml"
+            class="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand-500 hover:text-brand-500"
+          >
+            <Icon name="rss" size="sm" />
+            RSS Feed
+          </a>
+        )
+      }
       {socialLinks.map((link) => (
         <a
           href={link.href}

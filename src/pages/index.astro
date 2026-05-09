@@ -5,332 +5,363 @@ import Button from '@/components/ui/form/Button/Button.astro';
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
-import BlogCard from '@/components/blog/BlogCard.astro';
-import { getCollection } from 'astro:content';
-import siteConfig from '@/config/site.config';
-
-const projectItems = await getCollection('projects');
-const featuredProjects = projectItems
-  .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 4);
-
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => {
-    if (a.data.featured !== b.data.featured) return a.data.featured ? -1 : 1;
-    return b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf();
-  })
-  .slice(0, 3);
 ---
 
 <LandingLayout
-  title="Otarski — AI systems & digital platforms"
-  description="Software engineering company specializing in production-grade AI systems, intelligent automation, and fullstack digital platforms for organizations worldwide."
+  title="Otarski — Hiring AI assurance"
+  description="Otarski helps organizations review fairness and risk in AI-assisted hiring, with options for focused analysis, ongoing oversight, and independent review."
   image="/og-default.svg"
   includeOrgSchema={true}
+  includeProfessionalServiceSchema={true}
 >
-  <!-- Hero -->
   <Hero layout="centered" size="xl" class="hero-dark-gradient" showScrollIndicator descriptionClass="max-w-3xl">
-    <Badge slot="badge" variant="brand" pill pulse class="dark:text-brand-200">Software engineering company</Badge>
+    <Badge slot="badge" variant="brand" pill pulse class="dark:text-brand-200">Hiring AI assurance</Badge>
 
     <h1 slot="title">
-      <span class="text-foreground [-webkit-text-fill-color:currentColor]">Production-grade</span><br />
-      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)] dark:text-foreground dark:[-webkit-text-fill-color:currentColor]">AI systems</span><span class="text-foreground [-webkit-text-fill-color:currentColor]"> &amp; digital platforms</span>
+      <span class="text-foreground [-webkit-text-fill-color:currentColor]">Fairness insight</span><br />
+      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)] dark:text-foreground dark:[-webkit-text-fill-color:currentColor]">for AI-assisted hiring</span>
     </h1>
 
     <p slot="description">
-      We design, build, and deploy intelligent software for startups, mid-sized enterprises, and global teams — from rapid prototypes to systems engineered for scale, reliability, and measurable business value.
+      When recruiting workflows use automated screening, scoring, or ranking, teams need a clear way to look for disparity, watch outcomes over time, and document serious review. Otarski focuses on that problem — as a separate lens from your hiring software vendors.
     </p>
 
-   <Fragment slot="actions">
-      <Button size="lg" href="/contact">
-        Start a conversation
+    <Fragment slot="actions">
+      <Button size="lg" href="/#services" class="hero-btn-brand">
+        Explore services
         <Icon name="arrow-right" size="sm" />
       </Button>
-      <Button size="lg" variant="outline" href="/projects">
-        <Icon name="layers" size="sm" />
-        Our work
+      <Button size="lg" variant="outline" href="/contact" class="hero-btn-learn">
+        <Icon name="mail" size="sm" />
+        Talk to us
         <Icon name="arrow-right" size="sm" />
       </Button>
     </Fragment>
   </Hero>
 
-  <!-- Services Section -->
   <section id="services" class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
       <div class="flex flex-col items-center gap-4 text-center" data-reveal>
         <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>What we deliver</Badge>
+          <Badge variant="brand" pill>What we offer</Badge>
           <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
-            Engineering for real-world impact
-          </h2>
-        </div>
-        <p class="text-lg text-foreground-muted max-w-2xl mx-auto">
-          AI-driven products, automation, and fullstack platforms — scoped for your stage, built for production.
-        </p>
-      </div>
-
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-reveal data-reveal-delay="1">
-        <Card hover>
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-              <Icon name="cpu" size="sm" />
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-base font-semibold text-foreground">AI systems &amp; intelligent apps</h3>
-              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                Design and deployment of production-grade AI capabilities integrated into your products — reliable inference, data pipelines, and human-in-the-loop workflows where they matter.
-              </p>
-            </div>
-          </div>
-        </Card>
-
-        <Card hover>
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-              <Icon name="network" size="sm" />
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-base font-semibold text-foreground">Intelligent automation</h3>
-              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                Automate high-friction processes with observability and guardrails — so teams gain speed without sacrificing control or auditability.
-              </p>
-            </div>
-          </div>
-        </Card>
-
-        <Card hover>
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-              <Icon name="layers" size="sm" />
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-base font-semibold text-foreground">End-to-end product engineering</h3>
-              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
-                Fullstack delivery from APIs and services to client experiences — rapid prototyping when you are learning, hardened releases when you are scaling.
-              </p>
-            </div>
-          </div>
-        </Card>
-      </div>
-    </div>
-  </section>
-
- <!-- About Teaser -->
-  <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
-    <div class="mx-auto max-w-6xl px-6">
-      <div class="grid gap-12 lg:grid-cols-2">
-        <div class="flex flex-col justify-center" data-reveal>
-          <div class="flex flex-col gap-6 mb-6">
-            <Badge variant="brand" pill class="self-start">About Otarski</Badge>
-            <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
-              Deep expertise,<br />
-              <span class="text-brand-500">disciplined execution.</span>
-            </h2>
-          </div>
-          <p class="text-lg text-foreground-muted leading-relaxed mb-4">
-            We combine strong engineering fundamentals with a bias for shipping — so your organization can move from concept to production without sacrificing reliability, security, or maintainability.
-          </p>
-          <p class="text-lg text-foreground-muted leading-relaxed mb-8">
-            {siteConfig.address?.city
-              ? `${siteConfig.address.city} · ${siteConfig.address.country || 'Global clients'}`
-              : 'We work with teams around the world — from rapid prototypes to long-running platforms.'}
-          </p>
-           <Button variant="outline" href="/about" class="self-start">
-            About the company
-          </Button>
-        </div>
-        <Card variant="elevated" padding="lg" class="h-full flex flex-col" data-reveal data-reveal-delay="1">
-          <p class="text-sm text-foreground mb-5 text-center">How we engage</p>
-          <div class="grid grid-cols-2 gap-3 flex-1 auto-rows-fr">
-            <div class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-brand-500/40 transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-brand-500 cursor-default h-full">
-              <Icon name="crosshair" class="w-10 h-10 text-brand-500" />
-              <p class="text-sm font-semibold text-foreground">Outcome-led delivery</p>
-            </div>
-            <div class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-brand-500/40 transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-brand-500 cursor-default h-full">
-              <Icon name="shield-check" class="w-10 h-10 text-brand-500" />
-              <p class="text-sm font-semibold text-foreground">Production discipline</p>
-            </div>
-            <div class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-brand-500/40 transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-brand-500 cursor-default h-full">
-              <Icon name="globe" class="w-10 h-10 text-brand-500" />
-              <p class="text-sm font-semibold text-foreground">Global partnerships</p>
-            </div>
-            <div class="bg-background-tertiary rounded-xl p-5 flex flex-col items-center justify-center text-center gap-2 border-t-2 border-brand-500/40 transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-brand-500 cursor-default h-full">
-              <Icon name="gauge" class="w-10 h-10 text-brand-500" />
-              <p class="text-sm font-semibold text-foreground">Speed with clarity</p>
-            </div>
-          </div>
-        </Card>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section id="work" class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
-    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
-      <div class="flex flex-col items-center gap-4 text-center" data-reveal>
-        <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>Selected work</Badge>
-          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
-            Capabilities &amp; case studies
-          </h2>
-        </div>
-        <p class="text-lg text-foreground-muted max-w-2xl mx-auto">
-          Representative engagements and how we approach delivery.
-        </p>
-      </div>
-
-      <div class="grid gap-6 md:grid-cols-2" data-reveal data-reveal-delay="1">
-        {featuredProjects.map((project) => (
-          <Card variant="elevated" hover padding="lg" href={`/projects/${project.id.replace(/\.mdx?$/, '')}`} class="group flex flex-col">
-            <div class="flex flex-1 flex-col">
-              <div class="mb-3 flex items-start justify-between gap-4">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500/20 to-brand-500/5 flex items-center justify-center text-brand-500 shrink-0">
-                  <Icon name="layers" size="sm" />
-                </div>
-                <Icon name="arrow-up-right" size="sm" class="text-foreground-muted group-hover:text-brand-500 transition-colors shrink-0" />
-              </div>
-              <div class="mb-2 flex items-baseline gap-2">
-                <h3 class="font-display text-lg font-bold text-foreground">{project.data.title}</h3>
-                {project.data.year && (
-                  <span class="text-xs text-foreground-muted">{project.data.year}</span>
-                )}
-              </div>
-              <p class="text-sm text-foreground-muted leading-relaxed mb-4 flex-1">{project.data.description}</p>
-              <div class="flex flex-wrap gap-1.5">
-                {project.data.tags.map((tag) => (
-                  <Badge variant="brand">{tag}</Badge>
-                ))}
-              </div>
-            </div>
-          </Card>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Engagement principles -->
-  <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
-    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
-      <div class="flex flex-col items-center gap-4 text-center" data-reveal>
-        <div class="flex flex-col items-center gap-6">
-          <Badge variant="brand" pill>Principles</Badge>
-          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
-            How we work with your team
+            Diagnosis · Monitoring · Audit
           </h2>
         </div>
         <p class="text-lg text-foreground-muted max-w-2xl mx-auto text-balance">
-          Every engagement is shaped around clarity, speed, and precision — so solutions move efficiently from concept to deployment and stay maintainable in production.
+          Three ways to engage, depending on whether you need a point-in-time look, recurring oversight, or a formal review. Details and scope are agreed with you — start with a conversation if you are not sure where to begin.
         </p>
       </div>
 
-      <div class="grid gap-6 md:grid-cols-2" data-reveal data-reveal-delay="1">
-        <Card variant="elevated" padding="lg" hover>
-          <blockquote class="text-foreground-muted leading-relaxed text-base">
-            We build systems that are not only functional but also robust, maintainable, and aligned with real-world business needs — designed for immediate impact and long-term scalability.
-          </blockquote>
-          <p class="text-xs font-semibold uppercase tracking-wide text-brand-500 mt-6">Engineering standard</p>
+      <div class="grid gap-6 md:grid-cols-3" data-reveal data-reveal-delay="1">
+        <Card hover class="border-t-[3px] border-t-[var(--prd-coral)]">
+          <div class="flex items-start gap-4">
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 text-[var(--prd-coral)]"
+              style="background: color-mix(in srgb, var(--prd-coral) 14%, transparent)"
+            >
+              <Icon name="scan-search" size="sm" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-base font-semibold text-foreground">Diagnosis</h3>
+              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                A structured look at hiring outcomes to highlight where disparities may appear across groups and stages — useful when you want an objective read before you invest in deeper changes.
+              </p>
+            </div>
+          </div>
         </Card>
 
-        <Card variant="elevated" padding="lg" hover>
-          <blockquote class="text-foreground-muted leading-relaxed text-base">
-            We partner with organizations globally to transform ideas into scalable, reliable, and high-performance software — helping you accelerate innovation and reduce time to market.
-          </blockquote>
-          <p class="text-xs font-semibold uppercase tracking-wide text-brand-500 mt-6">Partnership model</p>
+        <Card hover class="border-t-[3px] border-t-[var(--prd-teal)]">
+          <div class="flex items-start gap-4">
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 text-[var(--prd-teal)]"
+              style="background: color-mix(in srgb, var(--prd-teal) 14%, transparent)"
+            >
+              <Icon name="activity" size="sm" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-base font-semibold text-foreground">Monitoring</h3>
+              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                Ongoing visibility into fairness-related signals as hiring continues — so changes in volume, process, or tooling do not outrun what your team can see.
+              </p>
+            </div>
+          </div>
+        </Card>
+
+        <Card hover class="border-t-[3px] border-t-[var(--prd-blue)]">
+          <div class="flex items-start gap-4">
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 text-[var(--prd-blue)]"
+              style="background: color-mix(in srgb, var(--prd-blue) 14%, transparent)"
+            >
+              <Icon name="scale" size="sm" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-base font-semibold text-foreground">Audit</h3>
+              <p class="text-sm text-foreground-muted leading-relaxed mt-1.5">
+                An independent review with documented methods and human oversight on formal engagements — for teams that need a serious paper trail, not a self-attestation.
+              </p>
+            </div>
+          </div>
         </Card>
       </div>
+
+      <p class="text-center text-sm text-foreground-muted max-w-2xl mx-auto" data-reveal data-reveal-delay="2">
+        Otarski is not a substitute for legal advice. We work alongside your counsel and HR leadership so technical findings are interpreted in your real-world context.
+      </p>
     </div>
   </section>
 
-  <!-- Blog -->
-  <section class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
+  <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
     <div class="mx-auto max-w-6xl px-6 flex flex-col gap-8">
-      <div class="flex items-end justify-between" data-reveal>
-        <div class="flex flex-col gap-6">
-          <Badge variant="brand" pill class="self-start">From the blog</Badge>
-          <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">
-            Featured
-          </h2>
-        </div>
-        <a href="/blog" class="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-brand-500 hover:text-brand-600 transition-colors shrink-0">
-          View all posts
-          <Icon name="arrow-right" size="sm" />
-        </a>
+      <div class="flex flex-col items-center gap-4 text-center" data-reveal>
+        <Badge variant="brand" pill>Context</Badge>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">Why teams reach out</h2>
+        <p class="text-lg text-foreground-muted max-w-2xl mx-auto text-balance">
+          Automated hiring is now common. Expectations around documentation, fairness review, and vendor independence are catching up. Otarski exists to make serious review more accessible than it has been for many mid-sized organizations.
+        </p>
       </div>
 
       <div class="grid gap-6 md:grid-cols-3" data-reveal data-reveal-delay="1">
-        {posts.map((post) => (
-          <BlogCard
-            title={post.data.title}
-            description={post.data.description}
-            href={`/blog/${post.id.replace('en/', '')}`}
-            publishedAt={post.data.publishedAt}
-            tags={post.data.tags}
-            author={post.data.author}
-            image={post.data.image}
-            svgSlug={post.data.svgSlug}
-          />
-        ))}
+        <Card padding="md" variant="elevated">
+          <h3 class="text-sm font-semibold text-foreground mb-2">Changing rules</h3>
+          <p class="text-sm text-foreground-muted leading-relaxed">
+            Public-sector and private-sector expectations around automated employment decisions continue to evolve. We help you translate those expectations into concrete review work.
+          </p>
+        </Card>
+        <Card padding="md" variant="elevated">
+          <h3 class="text-sm font-semibold text-foreground mb-2">Board and legal questions</h3>
+          <p class="text-sm text-foreground-muted leading-relaxed">
+            When leadership asks what you have checked, and how you know it is sound, an independent review can be easier to stand behind than vendor-provided assurances alone.
+          </p>
+        </Card>
+        <Card padding="md" variant="elevated">
+          <h3 class="text-sm font-semibold text-foreground mb-2">Operational reality</h3>
+          <p class="text-sm text-foreground-muted leading-relaxed">
+            Hiring data is messy and timelines are tight. We focus on methods that are appropriate to the data you can share and the decisions you actually need to make.
+          </p>
+        </Card>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="relative z-10 py-[var(--space-section-md)] bg-background-secondary border-t border-border">
+    <div class="mx-auto max-w-6xl px-6 flex flex-col gap-10">
+      <div class="flex flex-col items-center gap-4 text-center max-w-2xl mx-auto" data-reveal>
+        <Badge variant="brand" pill>Plans</Badge>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">Pricing</h2>
+        <p class="text-lg text-foreground-muted text-balance">
+          Published list prices for each product line. Final scope, taxes, and terms are confirmed in writing before you commit — use contact if your situation needs something custom.
+        </p>
       </div>
 
-      <div class="text-center sm:hidden">
-        <Button variant="outline" href="/blog">
-          View all posts
+      <div class="grid gap-8 lg:grid-cols-3 lg:items-stretch" data-reveal data-reveal-delay="1">
+        <div class="flex h-full min-h-0 flex-col gap-3">
+          <div class="shrink-0">
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-foreground-muted">Diagnosis</h3>
+            <p class="text-xs text-foreground-muted mt-1">Fairness scan · one-time</p>
+          </div>
+          <div class="flex min-h-0 flex-1 flex-col gap-3">
+            <Card padding="md" class="pricing-tier-card flex min-h-0 flex-1 flex-col">
+              <div class="flex min-h-0 flex-1 flex-col">
+                <p class="text-xs font-semibold text-foreground-muted uppercase tracking-wide">Free scan</p>
+                <p class="font-display text-3xl font-bold text-foreground mt-1 tabular-nums">$0</p>
+                <p class="text-xs text-foreground-muted mt-1">No account required</p>
+                <ul class="mt-4 flex-1 space-y-2 border-t border-border pt-4 text-sm text-foreground-muted">
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Top-level risk view</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Disparity flag</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />First hiring stage</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />On-screen results</li>
+                </ul>
+              </div>
+            </Card>
+            <Card padding="md" class="pricing-tier-card flex min-h-0 flex-1 flex-col ring-2 ring-brand-500/30 border-brand-500/40">
+              <div class="flex min-h-0 flex-1 flex-col">
+                <p class="text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wide">Full report</p>
+                <p class="font-display text-3xl font-bold text-foreground mt-1 tabular-nums">$299</p>
+                <p class="text-xs text-foreground-muted mt-1">Per analysis</p>
+                <ul class="mt-4 flex-1 space-y-2 border-t border-border pt-4 text-sm text-foreground-muted">
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />All hiring stages</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Written report (PDF)</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Regulatory mapping</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Remediation suggestions</li>
+                </ul>
+              </div>
+            </Card>
+            <Card padding="md" class="pricing-tier-card flex min-h-0 flex-1 flex-col">
+              <div class="flex min-h-0 flex-1 flex-col">
+                <p class="text-xs font-semibold text-foreground-muted uppercase tracking-wide">Report pack</p>
+                <p class="font-display text-3xl font-bold text-foreground mt-1 tabular-nums">$799</p>
+                <p class="text-xs text-foreground-muted mt-1">Bundle · one-time</p>
+                <ul class="mt-4 flex-1 space-y-2 border-t border-border pt-4 text-sm text-foreground-muted">
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />3× full reports</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Use within 12 months</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Same org or different scopes</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Good for quarterly snapshots</li>
+                </ul>
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        <div class="flex h-full min-h-0 flex-col gap-3">
+          <div class="shrink-0">
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-foreground-muted">Monitoring</h3>
+            <p class="text-xs text-foreground-muted mt-1">Per month · billed annually</p>
+          </div>
+          <div class="flex min-h-0 flex-1 flex-col gap-3">
+            <Card padding="md" class="pricing-tier-card flex min-h-0 flex-1 flex-col">
+              <div class="flex min-h-0 flex-1 flex-col">
+                <p class="text-xs font-semibold text-foreground-muted uppercase tracking-wide">Starter</p>
+                <p class="font-display text-3xl font-bold text-foreground mt-1 tabular-nums">$199</p>
+                <p class="text-xs text-foreground-muted mt-1">Per month · billed annually</p>
+                <ul class="mt-4 flex-1 space-y-2 border-t border-border pt-4 text-sm text-foreground-muted">
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Monthly fairness analysis</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Core dashboard</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Email alerts</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Up to ~500 hires/mo</li>
+                </ul>
+              </div>
+            </Card>
+            <Card padding="md" class="pricing-tier-card flex min-h-0 flex-1 flex-col ring-2 ring-brand-500/30 border-brand-500/40">
+              <div class="flex min-h-0 flex-1 flex-col">
+                <p class="text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wide">Standard</p>
+                <p class="font-display text-3xl font-bold text-foreground mt-1 tabular-nums">$399</p>
+                <p class="text-xs text-foreground-muted mt-1">Per month · billed annually</p>
+                <ul class="mt-4 flex-1 space-y-2 border-t border-border pt-4 text-sm text-foreground-muted">
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Everything in Starter</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Monthly PDF digest</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />ATS integration</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Up to ~2,000 hires/mo</li>
+                </ul>
+              </div>
+            </Card>
+            <Card padding="md" class="pricing-tier-card flex min-h-0 flex-1 flex-col">
+              <div class="flex min-h-0 flex-1 flex-col">
+                <p class="text-xs font-semibold text-foreground-muted uppercase tracking-wide">Growth</p>
+                <p class="font-display text-3xl font-bold text-foreground mt-1 tabular-nums">$799</p>
+                <p class="text-xs text-foreground-muted mt-1">Per month · billed annually</p>
+                <ul class="mt-4 flex-1 space-y-2 border-t border-border pt-4 text-sm text-foreground-muted">
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Everything in Standard</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Intersectional analysis</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Multiple ATS connections</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Unlimited hire volume</li>
+                </ul>
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        <div class="flex h-full min-h-0 flex-col gap-3">
+          <div class="shrink-0">
+            <h3 class="text-sm font-semibold uppercase tracking-wide text-foreground-muted">Audit</h3>
+            <p class="text-xs text-foreground-muted mt-1">Formal engagement</p>
+          </div>
+          <div class="flex min-h-0 flex-1 flex-col gap-3">
+            <Card padding="md" class="pricing-tier-card flex min-h-0 flex-1 flex-col">
+              <div class="flex min-h-0 flex-1 flex-col">
+                <p class="text-xs font-semibold text-foreground-muted uppercase tracking-wide">Focused</p>
+                <p class="font-display text-3xl font-bold text-foreground mt-1 tabular-nums">$2,500</p>
+                <p class="text-xs text-foreground-muted mt-1">Single system · one jurisdiction</p>
+                <ul class="mt-4 flex-1 space-y-2 border-t border-border pt-4 text-sm text-foreground-muted">
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Statistical fairness review</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Human review &amp; signoff</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Assurance report (PDF)</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Mapped to agreed scope</li>
+                </ul>
+              </div>
+            </Card>
+            <Card padding="md" class="pricing-tier-card flex min-h-0 flex-1 flex-col ring-2 ring-brand-500/30 border-brand-500/40">
+              <div class="flex min-h-0 flex-1 flex-col">
+                <p class="text-xs font-semibold text-brand-600 dark:text-brand-400 uppercase tracking-wide">Full audit</p>
+                <p class="font-display text-3xl font-bold text-foreground mt-1 tabular-nums">$5,000</p>
+                <p class="text-xs text-foreground-muted mt-1">Full pipeline in scope</p>
+                <ul class="mt-4 flex-1 space-y-2 border-t border-border pt-4 text-sm text-foreground-muted">
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Statistical &amp; governance review</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Multi-jurisdiction mapping</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Regulatory gap analysis</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Evidence appendix</li>
+                </ul>
+              </div>
+            </Card>
+            <Card padding="md" class="pricing-tier-card flex min-h-0 flex-1 flex-col">
+              <div class="flex min-h-0 flex-1 flex-col">
+                <p class="text-xs font-semibold text-foreground-muted uppercase tracking-wide">Annual program</p>
+                <p class="font-display text-3xl font-bold text-foreground mt-1 tabular-nums">$8,000</p>
+                <p class="text-xs text-foreground-muted mt-1">Per year · 2 full audits</p>
+                <ul class="mt-4 flex-1 space-y-2 border-t border-border pt-4 text-sm text-foreground-muted">
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Two full audits per year</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Consistent methodology</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />Year-on-year comparison</li>
+                  <li class="flex gap-2"><Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />For recurring assurance needs</li>
+                </ul>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-2" data-reveal data-reveal-delay="2">
+        <Button size="lg" href="/contact" class="hero-btn-brand">
+          Questions or custom scope
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+        <Button size="lg" variant="outline" href="/projects/otarski" class="hero-btn-learn">
+          Product overview
           <Icon name="arrow-right" size="sm" />
         </Button>
       </div>
     </div>
   </section>
 
- <!-- CTA -->
+  <section class="relative z-10 py-[var(--space-section-md)] bg-background border-t border-border">
+    <div class="mx-auto max-w-6xl px-6 grid gap-12 lg:grid-cols-2">
+      <div class="flex flex-col justify-center" data-reveal>
+        <Badge variant="brand" pill class="self-start mb-4">Approach</Badge>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+          Sound methods,<br />
+          <span class="text-brand-500">practical outputs.</span>
+        </h2>
+        <p class="text-lg text-foreground-muted leading-relaxed mb-4">
+          Our work is grounded in established statistical practice for comparing selection and outcomes across groups, adapted to the hiring stages and fields you include in scope.
+        </p>
+        <p class="text-lg text-foreground-muted leading-relaxed mb-6">
+          We take data handling seriously: we only retain what a given engagement requires, we are transparent about limitations, and we flag when sample sizes or data quality mean results should be read cautiously.
+        </p>
+        <Button variant="outline" href="/about" class="self-start">
+          About Otarski
+          <Icon name="arrow-right" size="sm" />
+        </Button>
+      </div>
+      <Card variant="elevated" padding="lg" class="h-full" data-reveal data-reveal-delay="1">
+        <p class="text-sm font-semibold text-foreground mb-4">Independence</p>
+        <ul class="space-y-3 text-sm text-foreground-muted">
+          <li class="flex gap-2">
+            <Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />
+            <span>We are structured to review hiring AI without also selling you the underlying scoring or ATS product.</span>
+          </li>
+          <li class="flex gap-2">
+            <Icon name="check" size="sm" class="text-[var(--prd-teal)] shrink-0 mt-0.5" />
+            <span>Formal engagements include human review so outputs are not only machine-generated.</span>
+          </li>
+        </ul>
+      </Card>
+    </div>
+  </section>
+
   <section class="relative z-10 py-[var(--space-section-md)] bg-background">
     <div class="mx-auto max-w-2xl px-6 text-center" data-reveal>
-      <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">
-        Plan your next release with us
-      </h2>
+      <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">Next step</h2>
       <p class="text-lg text-foreground-muted mb-8 text-balance">
-        Share your roadmap, technical constraints, and timeline. We will respond with a clear path forward — typically a discovery conversation or a short written assessment.
+        Tell us what you are trying to learn or demonstrate. We will respond with a sensible path — or a candid note if we are not the right fit.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" href="/contact">
+        <Button size="lg" href="/contact" class="hero-btn-brand">
           Contact Otarski
           <Icon name="arrow-right" size="sm" />
         </Button>
-        <Button size="lg" variant="outline" href="/about">
-          About the company
-        </Button>
+        <Button size="lg" variant="outline" href="/about" class="hero-btn-learn">About the company</Button>
       </div>
     </div>
   </section>
-
-<script>
-  function initCountup() {
-    const counters = document.querySelectorAll<HTMLElement>('[data-countup]:not([data-countup-init])');
-    if (counters.length === 0) return;
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        observer.unobserve(entry.target);
-        const el = entry.target as HTMLElement;
-        const target = parseInt(el.dataset.countup ?? '0', 10);
-        const suffix = el.dataset.suffix ?? '';
-        const duration = 1200;
-        const start = performance.now();
-        const tick = (now: number) => {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.round(eased * target) + suffix;
-          if (progress < 1) requestAnimationFrame(tick);
-        };
-        requestAnimationFrame(tick);
-      });
-    }, { threshold: 0.4 });
-    counters.forEach((el) => {
-      el.dataset.countupInit = 'true';
-      observer.observe(el);
-    });
-  }
-
-  document.addEventListener('astro:page-load', initCountup);
-</script>
 </LandingLayout>

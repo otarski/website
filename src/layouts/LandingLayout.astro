@@ -56,8 +56,8 @@ const isHomePage = Astro.url.pathname === '/';
     variant="default"
     colorScheme="default"
     size="lg"
-    showCta={false}
-    cta={{ label: 'Get in touch', href: '/contact' }}
+    showCta
+    cta={{ label: 'Contact us', href: '/contact' }}
     showThemeSelector
     showScrollProgress={isHomePage}
     scrollProgressPosition="top"
@@ -65,5 +65,10 @@ const isHomePage = Astro.url.pathname === '/';
 
   <slot />
 
-  <Footer slot="footer" layout="simple" background="secondary" hideLogo />
+  <Footer
+    slot="footer"
+    layout="simple"
+    background="secondary"
+    tagline="Independent review for fairness and risk in AI-assisted hiring."
+  />
 </BaseLayout>

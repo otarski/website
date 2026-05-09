@@ -2,15 +2,15 @@
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
 
 const steps = [
-  { cmd: 'align — goals, constraints, success metrics', desc: 'Discovery & architecture' },
-  { cmd: 'build — services, automation, interfaces', desc: 'Engineering & hardening' },
-  { cmd: 'deploy — production, observability, handover', desc: 'Launch & iteration' },
+  { cmd: 'scope — goals, data, constraints', desc: 'Intake' },
+  { cmd: 'analyze — methods, checks, limits', desc: 'Review' },
+  { cmd: 'report — findings, caveats, next steps', desc: 'Delivery' },
 ];
 
 const stats = [
-  { value: 'AI', label: 'systems & apps' },
-  { value: 'E2E', label: 'product engineering' },
-  { value: 'Global', label: 'delivery footprint' },
+  { value: '3', label: 'service entry points' },
+  { value: '1', label: 'focus: hiring AI' },
+  { value: 'Many', label: 'contexts' },
 ];
 ---
 
@@ -23,22 +23,22 @@ const stats = [
         class="text-brand-500 mb-4 flex items-center gap-2 text-sm font-bold tracking-wide uppercase"
       >
         <Icon name="terminal" size="sm" />
-        <span>How we deliver</span>
+        <span>How we work</span>
       </div>
 
       <h2 class="font-display mb-[var(--space-heading-gap)] text-3xl font-bold text-balance md:text-4xl">
-        From concept to <span class="text-brand-500">production.</span>
+        From question to <span class="text-brand-500">documented review.</span>
       </h2>
 
       <div class="text-foreground-secondary space-y-4 text-lg leading-relaxed">
         <p>
-          Otarski partners with organizations to ship production-grade AI systems and digital platforms — with clarity on scope, architecture that holds up under load, and delivery you can operate long after launch.
+          Otarski helps teams get an independent read on fairness and risk in AI-assisted hiring — with clear methods, explicit limitations, and outputs your stakeholders can actually use.
         </p>
         <p>
-          We emphasize rapid prototyping when you need to learn fast, and production-ready engineering when you are ready to scale — always aligned with real business constraints.
+          We scope each engagement to the decision you are trying to support, then deliver analysis and narrative that match that scope — without turning the website into a substitute for your counsel.
         </p>
         <p class="text-foreground-muted">
-          Remote-first engagements with teams worldwide.
+          Remote-first; we work with organizations in the United States and internationally.
         </p>
       </div>
 
@@ -69,7 +69,7 @@ const stats = [
             <span class="h-3 w-3 rounded-full" style="background-color: var(--warning);"></span>
             <span class="h-3 w-3 rounded-full" style="background-color: var(--success);"></span>
           </div>
-          <span class="text-foreground-muted ml-2 font-mono text-xs">delivery</span>
+          <span class="text-foreground-muted ml-2 font-mono text-xs">review</span>
         </div>
 
         <!-- Terminal Body -->
@@ -90,7 +90,7 @@ const stats = [
           <div class="border-border mt-2 border-t pt-4">
             <div class="flex items-center gap-2">
               <span class="text-green-400">✓</span>
-              <span class="text-foreground">Outcome: <span class="text-cyan-400">measurable impact</span></span>
+              <span class="text-foreground">Outcome: <span class="text-cyan-400">clearer decisions</span></span>
             </div>
           </div>
         </div>

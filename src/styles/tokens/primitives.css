@@ -37,6 +37,11 @@
   --brand-800: oklch(37.2% 0.13 38);
   --brand-900: oklch(26.5% 0.09 38);
 
+  /* PRD service accents (homepage); orange theme may tweak in theme file */
+  --prd-coral: #c84b1e;
+  --prd-teal: #0f6e56;
+  --prd-blue: #185fa5;
+
   /* Accent - Blue for links/focus */
   --blue-500: oklch(59.5% 0.19 260);
   --blue-600: oklch(53.2% 0.19 260);

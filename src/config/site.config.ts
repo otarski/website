@@ -60,7 +60,7 @@ export interface SiteConfig {
 const siteConfig: SiteConfig = {
   name: 'Otarski',
   description:
-    'Otarski is a software engineering company specializing in the design, development, and deployment of production-grade AI systems and digital platforms for organizations worldwide.',
+    'Otarski helps organizations assess fairness and risk in AI-assisted hiring, with options for focused analysis, ongoing oversight, and independent review.',
   url: SITE_URL || 'https://otarski.com',
   ogImage: '/og-default.svg',
   author: 'Otarski',
@@ -70,7 +70,7 @@ const siteConfig: SiteConfig = {
     city: 'Remote-first',
     state: '',
     zip: '',
-    country: 'Global engagements',
+    country: 'United States & international',
   },
   /** Public profile URLs — used by Footer, Header, and JSON-LD `sameAs` */
   socialLinks: [
@@ -92,8 +92,8 @@ const siteConfig: SiteConfig = {
       svg: '/favicon.svg',
     },
     colors: {
-      themeColor: '#3b82f6',
-      backgroundColor: '#ffffff',
+      themeColor: '#c84b1e',
+      backgroundColor: '#faf9f6',
     },
   },
 };
