@@ -60,7 +60,7 @@ export interface SiteConfig {
 const siteConfig: SiteConfig = {
   name: 'Otarski',
   description:
-    'Otarski helps organizations assess fairness and risk in AI-assisted hiring, with options for focused analysis, ongoing oversight, and independent review.',
+    'Otarski is independent hiring assurance: fairness review, ongoing monitoring, and formal audits for teams that use automated screening or scoring. We are separate from your recruiting software vendors.',
   url: SITE_URL || 'https://otarski.com',
   ogImage: '/og-default.svg',
   author: 'Otarski',
