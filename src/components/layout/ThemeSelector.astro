@@ -2,7 +2,7 @@
 /**
  * ThemeSelector
  * A row of twelve colour swatches that switches the active colour theme at
- * runtime by writing `data-theme` on <html> and persisting to sessionStorage.
+ * runtime by writing `data-theme` on <html> (not persisted — resets on full reload).
  *
  * Usage in Header:  <ThemeSelector />
  * Pass `class` to tint the label colour for floating / inverted headers.
@@ -83,20 +83,16 @@ const themes = [
 </style>
 
 <script>
-  const STORAGE_KEY = 'color-theme';
-  const DEFAULT_THEME = 'blue';
+  const DEFAULT_THEME = 'amber';
 
   function getActiveTheme(): string {
-    try {
-      return sessionStorage.getItem(STORAGE_KEY) || DEFAULT_THEME;
-    } catch {
-      return DEFAULT_THEME;
-    }
+    const id = document.documentElement.getAttribute('data-theme');
+    const themes = ['orange', 'amber', 'lime', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'magenta'];
+    return id && themes.includes(id) ? id : DEFAULT_THEME;
   }
 
   function setTheme(id: string) {
     document.documentElement.setAttribute('data-theme', id);
-    try { sessionStorage.setItem(STORAGE_KEY, id); } catch { /* private mode */ }
 
     // Update every swatch on the page (handles multiple selector instances)
     const swatches = document.querySelectorAll<HTMLButtonElement>('.theme-swatch');

@@ -116,20 +116,16 @@ const themes = [
 </style>
 
 <script>
-  const STORAGE_KEY = 'color-theme';
-  const DEFAULT_THEME = 'blue';
+  const DEFAULT_THEME = 'amber';
 
   function getActiveTheme(): string {
-    try {
-      return sessionStorage.getItem(STORAGE_KEY) || DEFAULT_THEME;
-    } catch {
-      return DEFAULT_THEME;
-    }
+    const id = document.documentElement.getAttribute('data-theme');
+    const themes = ['orange', 'amber', 'lime', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'magenta'];
+    return id && themes.includes(id) ? id : DEFAULT_THEME;
   }
 
   function setTheme(id: string) {
     document.documentElement.setAttribute('data-theme', id);
-    try { sessionStorage.setItem(STORAGE_KEY, id); } catch { /* private mode */ }
 
     // Update dropdown swatches
     const ddSwatches = document.querySelectorAll<HTMLButtonElement>('.theme-swatch-dd');

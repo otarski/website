@@ -12,7 +12,6 @@ interface Props {
   client?: string;
   role?: string;
   services?: string[];
-  url?: string;
   repo?: string;
   image?: ImageMetadata;
   imageAlt?: string;
@@ -25,7 +24,6 @@ const {
   year,
   client,
   role,
-  url,
   repo,
   image,
   imageAlt,
@@ -97,20 +95,12 @@ const hasMeta = year || client || role;
     )}
 
     <!-- Action buttons -->
-    {(url || repo) && (
+    {repo && (
       <div class="flex flex-wrap gap-3">
-        {url && (
-          <Button href={url} target="_blank" rel="noopener noreferrer" size="md">
-            <Icon name="external-link" size="sm" />
-            View live site
-          </Button>
-        )}
-        {repo && (
-          <Button href={repo} target="_blank" rel="noopener noreferrer" variant="outline" size="md">
-            <Icon name="github" size="sm" />
-            View source
-          </Button>
-        )}
+        <Button href={repo} target="_blank" rel="noopener noreferrer" variant="outline" size="md">
+          <Icon name="github" size="sm" />
+          View source
+        </Button>
       </div>
     )}
   </div>

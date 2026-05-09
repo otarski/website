@@ -56,7 +56,7 @@ if (includeProfessionalServiceSchema) {
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth dark" data-theme="orange">
+<html lang="en" class="scroll-smooth dark" data-theme="amber">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -134,41 +134,38 @@ if (includeProfessionalServiceSchema) {
       })();
     </script>
 
-    <!-- Theme script (runs before body paint; <html> starts with class="dark" as default) -->
+    <!-- Theme: no storage — SSR defaults only on full reload; copy DOM state on client navigations -->
     <script is:inline>
       (function () {
         const COLOR_THEMES = ['orange', 'amber', 'lime', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'magenta'];
+        const DEFAULT_COLOR_THEME = 'amber';
 
-        function applyTheme(el) {
-          try {
-            // Dark / light mode
-            if (sessionStorage.getItem('theme') === 'light') {
-              el.classList.remove('dark');
-            } else {
-              el.classList.add('dark');
-            }
-          } catch (_) { /* ignored */ }
-
-          try {
-            // Color theme — persisted in sessionStorage so it resets to sky on every new visit
-            const saved = sessionStorage.getItem('color-theme');
-            if (saved && COLOR_THEMES.indexOf(saved) !== -1) {
-              el.setAttribute('data-theme', saved);
-            }
-          } catch (_) { /* ignored */ }
+        function syncTheme(fromEl, toEl) {
+          if (fromEl.classList.contains('dark')) {
+            toEl.classList.add('dark');
+          } else {
+            toEl.classList.remove('dark');
+          }
+          var dt = fromEl.getAttribute('data-theme');
+          if (dt && COLOR_THEMES.indexOf(dt) !== -1) {
+            toEl.setAttribute('data-theme', dt);
+          } else {
+            toEl.setAttribute('data-theme', DEFAULT_COLOR_THEME);
+          }
         }
 
-        applyTheme(document.documentElement);
+        try {
+          var cur = document.documentElement.getAttribute('data-theme');
+          if (!cur || COLOR_THEMES.indexOf(cur) === -1) {
+            document.documentElement.setAttribute('data-theme', DEFAULT_COLOR_THEME);
+          }
+        } catch (_) { /* ignored */ }
 
         if (!window.__themeListenersInit) {
           window.__themeListenersInit = true;
 
           document.addEventListener('astro:before-swap', function (e) {
-            applyTheme(e.newDocument.documentElement);
-          });
-
-          document.addEventListener('astro:after-swap', function () {
-            applyTheme(document.documentElement);
+            syncTheme(document.documentElement, e.newDocument.documentElement);
           });
         }
       })();

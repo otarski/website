@@ -5,6 +5,7 @@ import Button from '@/components/ui/form/Button/Button.astro';
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
+import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
 ---
 
 <LandingLayout
@@ -18,8 +19,8 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
     <Badge slot="badge" variant="brand" pill pulse class="dark:text-brand-200">Hiring AI assurance</Badge>
 
     <h1 slot="title">
-      <span class="text-foreground [-webkit-text-fill-color:currentColor]">Fairness insight</span><br />
-      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)] dark:text-foreground dark:[-webkit-text-fill-color:currentColor]">for AI-assisted hiring</span>
+      <span class="text-foreground [-webkit-text-fill-color:currentColor]">Know if your hiring AI has a fairness problem</span><br />
+      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)] dark:text-foreground dark:[-webkit-text-fill-color:currentColor]">— before a regulator does</span>
     </h1>
 
     <p slot="description">
@@ -105,10 +106,6 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
           </div>
         </Card>
       </div>
-
-      <p class="text-center text-sm text-foreground-muted max-w-2xl mx-auto" data-reveal data-reveal-delay="2">
-        Otarski is not a substitute for legal advice. We work alongside your counsel and HR leadership so technical findings are interpreted in your real-world context.
-      </p>
     </div>
   </section>
 
@@ -118,27 +115,27 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
         <Badge variant="brand" pill>Context</Badge>
         <h2 class="font-display text-3xl md:text-4xl font-bold text-foreground">Why teams reach out</h2>
         <p class="text-lg text-foreground-muted max-w-2xl mx-auto text-balance">
-          Automated hiring is now common. Expectations around documentation, fairness review, and vendor independence are catching up. Otarski exists to make serious review more accessible than it has been for many mid-sized organizations.
+          Automated hiring is now common, and expectations around documentation, fairness review, and vendor independence are catching up. We are working with early customers in regulated and high-volume hiring — if you need named references as part of procurement, ask when you contact us.
         </p>
       </div>
 
       <div class="grid gap-6 md:grid-cols-3" data-reveal data-reveal-delay="1">
         <Card padding="md" variant="elevated">
-          <h3 class="text-sm font-semibold text-foreground mb-2">Changing rules</h3>
+          <h3 class="text-sm font-semibold text-foreground mb-2">When the rules move</h3>
           <p class="text-sm text-foreground-muted leading-relaxed">
-            Public-sector and private-sector expectations around automated employment decisions continue to evolve. We help you translate those expectations into concrete review work.
+            NYC Local Law 144 and similar regimes are spreading. When your CHRO is pulled into disclosure or vendor diligence, a written, independent read on fairness signals is easier to defend than the scoring vendor's slides alone.
           </p>
         </Card>
         <Card padding="md" variant="elevated">
-          <h3 class="text-sm font-semibold text-foreground mb-2">Board and legal questions</h3>
+          <h3 class="text-sm font-semibold text-foreground mb-2">When legal asks for receipts</h3>
           <p class="text-sm text-foreground-muted leading-relaxed">
-            When leadership asks what you have checked, and how you know it is sound, an independent review can be easier to stand behind than vendor-provided assurances alone.
+            Your general counsel wants to know what was checked before the new ATS rolls out everywhere. "The vendor said it was fine" rarely satisfies that question — a scoped review gives you something you can point to.
           </p>
         </Card>
         <Card padding="md" variant="elevated">
-          <h3 class="text-sm font-semibold text-foreground mb-2">Operational reality</h3>
+          <h3 class="text-sm font-semibold text-foreground mb-2">When the numbers do not wait</h3>
           <p class="text-sm text-foreground-muted leading-relaxed">
-            Hiring data is messy and timelines are tight. We focus on methods that are appropriate to the data you can share and the decisions you actually need to make.
+            Hiring surges, last-minute reqs, and messy exports are normal. We scope methods to the data and timelines you have so oversight does not depend on a perfect warehouse first.
           </p>
         </Card>
       </div>
@@ -153,6 +150,20 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
         <p class="text-lg text-foreground-muted text-balance">
           Published list prices for each product line. Final scope, taxes, and terms are confirmed in writing before you commit — use contact if your situation needs something custom.
         </p>
+      </div>
+
+      <div class="mx-auto max-w-2xl" data-reveal data-reveal-delay="1">
+        <Card padding="lg" variant="elevated" class="border-brand-500/20">
+          <h3 class="font-display text-lg font-semibold text-foreground">Free fairness scan — get notified</h3>
+          <p class="text-sm text-foreground-muted mt-2 mb-4 leading-relaxed">
+            A self-serve scan is in development so you can try a top-level read at no cost. Join the list for one email when it launches — or use <a href="/contact" class="text-brand-600 underline-offset-2 hover:underline dark:text-brand-400">contact</a> if you need help sooner.
+          </p>
+          <NewsletterForm
+            buttonText="Notify me"
+            placeholder="Work email"
+            successMessage="You are on the list. We will email you when the scan is available."
+          />
+        </Card>
       </div>
 
       <div class="grid gap-8 lg:grid-cols-3 lg:items-stretch" data-reveal data-reveal-delay="1">
@@ -306,8 +317,8 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
           Questions or custom scope
           <Icon name="arrow-right" size="sm" />
         </Button>
-        <Button size="lg" variant="outline" href="/projects/otarski" class="hero-btn-learn">
-          Product overview
+        <Button size="lg" variant="outline" href="/projects" class="hero-btn-learn">
+          How Otarski works
           <Icon name="arrow-right" size="sm" />
         </Button>
       </div>
@@ -352,8 +363,12 @@ import Icon from '@/components/ui/primitives/Icon/Icon.astro';
   <section class="relative z-10 py-[var(--space-section-md)] bg-background">
     <div class="mx-auto max-w-2xl px-6 text-center" data-reveal>
       <h2 class="font-display text-4xl font-bold text-foreground mb-4 text-balance">Next step</h2>
-      <p class="text-lg text-foreground-muted mb-8 text-balance">
+      <p class="text-lg text-foreground-muted mb-6 text-balance">
         Tell us what you are trying to learn or demonstrate. We will respond with a sensible path — or a candid note if we are not the right fit.
+      </p>
+      <p class="text-sm text-foreground-muted mb-8 max-w-xl mx-auto text-balance leading-relaxed">
+        <span class="font-medium text-foreground">We work alongside your legal team, not instead of them.</span>
+        Otarski does not provide legal advice; your counsel interprets regulatory obligations in your context.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <Button size="lg" href="/contact" class="hero-btn-brand">

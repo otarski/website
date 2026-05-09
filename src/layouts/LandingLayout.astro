@@ -36,6 +36,8 @@ const {
 } = Astro.props;
 
 const isHomePage = Astro.url.pathname === '/';
+/** Colour palette swatches — internal/demo only; add ?themes=1 to the URL to show */
+const showThemePalette = Astro.url.searchParams.get('themes') === '1';
 ---
 
 <BaseLayout
@@ -58,7 +60,7 @@ const isHomePage = Astro.url.pathname === '/';
     size="lg"
     showCta
     cta={{ label: 'Contact us', href: '/contact' }}
-    showThemeSelector
+    showThemeSelector={showThemePalette}
     showScrollProgress={isHomePage}
     scrollProgressPosition="top"
   />
