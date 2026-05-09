@@ -5,7 +5,6 @@ import Button from '@/components/ui/form/Button/Button.astro';
 import Badge from '@/components/ui/data-display/Badge/Badge.astro';
 import Card from '@/components/ui/data-display/Card/Card.astro';
 import Icon from '@/components/ui/primitives/Icon/Icon.astro';
-import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
 ---
 
 <LandingLayout
@@ -19,8 +18,8 @@ import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
     <Badge slot="badge" variant="brand" pill pulse class="dark:text-brand-200">Hiring AI assurance</Badge>
 
     <h1 slot="title">
-      <span class="text-foreground [-webkit-text-fill-color:currentColor]">Know if your hiring AI has a fairness problem</span><br />
-      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)] dark:text-foreground dark:[-webkit-text-fill-color:currentColor]">— before a regulator does</span>
+      <span class="text-foreground [-webkit-text-fill-color:currentColor]">Know if your hiring AI has a fairness problem.</span><br />
+      <span class="text-brand-500 [-webkit-text-fill-color:var(--color-brand-500)] dark:text-foreground dark:[-webkit-text-fill-color:currentColor]">Before a regulator does.</span>
     </h1>
 
     <p slot="description">
@@ -28,13 +27,12 @@ import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
     </p>
 
     <Fragment slot="actions">
-      <Button size="lg" href="/#services" class="hero-btn-brand">
-        Explore services
+      <Button size="lg" href="/contact" class="hero-btn-brand">
+        Get your free fairness scan
         <Icon name="arrow-right" size="sm" />
       </Button>
-      <Button size="lg" variant="outline" href="/contact" class="hero-btn-learn">
-        <Icon name="mail" size="sm" />
-        Talk to us
+      <Button size="lg" variant="outline" href="/#services" class="hero-btn-learn">
+        Explore services
         <Icon name="arrow-right" size="sm" />
       </Button>
     </Fragment>
@@ -150,20 +148,6 @@ import NewsletterForm from '@/components/patterns/NewsletterForm.astro';
         <p class="text-base sm:text-lg text-foreground-muted text-balance">
           Published list prices for each product line. Final scope, taxes, and terms are confirmed in writing before you commit — use contact if your situation needs something custom.
         </p>
-      </div>
-
-      <div class="mx-auto max-w-2xl" data-reveal data-reveal-delay="1">
-        <Card padding="lg" variant="elevated" class="border-brand-500/20">
-          <h3 class="font-display text-lg font-semibold text-foreground">Free fairness scan — get notified</h3>
-          <p class="text-sm text-foreground-muted mt-2 mb-4 leading-relaxed">
-            A self-serve scan is in development so you can try a top-level read at no cost. Join the list for one email when it launches — or use <a href="/contact" class="text-brand-600 underline-offset-2 hover:underline dark:text-brand-400">contact</a> if you need help sooner.
-          </p>
-          <NewsletterForm
-            buttonText="Notify me"
-            placeholder="Work email"
-            successMessage="You are on the list. We will email you when the scan is available."
-          />
-        </Card>
       </div>
 
       <div class="grid gap-8 lg:grid-cols-3 lg:items-stretch" data-reveal data-reveal-delay="1">
